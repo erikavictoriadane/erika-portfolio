@@ -1,0 +1,374 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import WorkGallery from '../components/WorkGallery.svelte';
+
+// Query artifacts collection using Astro content layer
+const rawArtifacts = await getCollection('artifacts');
+
+const isDev = import.meta.env.DEV;
+
+// Format and serialize artifact items to pass as clean props into the Svelte island
+const artifacts = rawArtifacts
+  .filter((item) => isDev || !item.data.hidden)
+  .map((item) => ({
+    id: item.id,
+    title: item.data.title,
+    description: item.data.description,
+    tags: item.data.tags,
+    link: item.data.link ?? null,
+    showLiveLink: item.data.showLiveLink ?? false,
+    date: item.data.date ? (item.data.date instanceof Date ? item.data.date.toISOString() : String(item.data.date)) : null,
+    showDate: item.data.showDate ?? false,
+    order: item.data.order ?? item.data.priority ?? null,
+    featured: item.data.featured ?? false,
+    hidden: item.data.hidden ?? false,
+    previewImage: item.data.previewImage ?? '',
+    mediaType: item.data.mediaType ?? 'image',
+    videoUrl: item.data.videoUrl ?? '',
+    galleryImages: item.data.galleryImages ?? [],
+    metrics: item.data.metrics ?? '',
+    body: item.body ?? '',
+  }))
+  .sort((a, b) => {
+    const orderA = a.order !== null && a.order !== undefined ? Number(a.order) : Infinity;
+    const orderB = b.order !== null && b.order !== undefined ? Number(b.order) : Infinity;
+    if (orderA !== orderB) {
+      return orderA - orderB;
+    }
+    return a.title.localeCompare(b.title, undefined, { sensitivity: 'base' });
+  });
+
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Layout
+  title="Portfolio | Marketing Director & Brand Strategist"
+  description="Curated portfolio template showcasing integrated omnichannel campaigns, quantitative B2B growth engines, and high-impact brand repositioning."
+>
+  <!-- Sticky Glassmorphic Header Navigation -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-[#faf8f5]/85 border-b border-stone-200/80 transition-all">
+    <div class="max-w-6xl mx-auto px-6 h-18 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-3 group">
+        <span class="w-9 h-9 rounded-full bg-stone-900 flex items-center justify-center text-stone-50 font-serif font-bold text-base shadow-sm group-hover:bg-stone-800 transition-all">
+          M
+        </span>
+        <div class="flex flex-col">
+          <span class="font-serif font-bold text-base tracking-tight text-stone-900 group-hover:text-stone-700 transition-colors">
+            Marketing Director
+          </span>
+          <span class="text-[10px] font-mono tracking-widest uppercase text-stone-600">
+            Portfolio Template
+          </span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="flex items-center gap-1 sm:gap-6 text-xs sm:text-sm font-medium text-stone-600">
+          <li>
+            <a href="#hero" class="px-3 py-1.5 rounded-full hover:text-stone-900 hover:bg-stone-100/80 transition-colors">
+              Overview
+            </a>
+          </li>
+          <li>
+            <a href="#about" class="px-3 py-1.5 rounded-full hover:text-stone-900 hover:bg-stone-100/80 transition-colors">
+              About
+            </a>
+          </li>
+          <li>
+            <a href="#work" class="px-3 py-1.5 rounded-full hover:text-stone-900 hover:bg-stone-100/80 transition-colors">
+              Gallery Wall
+            </a>
+          </li>
+          <li>
+            <a href="#contact" class="px-3.5 py-1.5 rounded-full bg-stone-900 text-stone-50 hover:bg-stone-800 transition-colors shadow-sm">
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1">
+    <!-- Section 1: Hero (#hero) -->
+    <section id="hero" class="relative pt-16 pb-20 md:pt-24 md:pb-24 max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
+        <!-- Left Column: Headline, Bio & CTAs -->
+        <div class="lg:col-span-7 space-y-7">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-white border border-stone-200/90 text-xs font-mono text-stone-600 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Open for Strategic Marketing & Advisory Roles
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-5xl md:text-[54px] font-bold text-stone-900 tracking-tight leading-[1.12]">
+            Translating brand narrative into <span class="italic font-normal underline decoration-stone-300 underline-offset-8">high-converting</span> campaigns & enduring market equity.
+          </h1>
+
+          <p class="text-base sm:text-lg text-stone-600 leading-relaxed font-normal">
+            Senior marketing leader and growth strategist specializing in 360° product launches, data-driven acquisition loops, and brand repositioning for visionary companies.
+          </p>
+
+          <!-- Jump CTAs -->
+          <div class="pt-2 flex flex-wrap items-center gap-4">
+            <a
+              href="#work"
+              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-xs tracking-wide uppercase bg-stone-900 text-stone-50 hover:bg-stone-800 shadow-md hover:shadow-lg transition-all cursor-pointer"
+            >
+              <span>Explore Gallery Wall</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </a>
+            <a
+              href="#about"
+              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-xs tracking-wide uppercase bg-white text-stone-800 hover:bg-stone-100 border border-stone-300/80 shadow-sm transition-all cursor-pointer"
+            >
+              <span>About Me</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Framed Editorial Hero Portrait -->
+        <div class="lg:col-span-5">
+          <div class="relative group mx-auto max-w-sm lg:max-w-none">
+            <!-- Decorative frame matching About Me styling -->
+            <div class="relative rounded-3xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] border border-stone-200 bg-white p-3 sm:p-4">
+              <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-stone-100 relative">
+                <img
+                  src={`${baseUrl}/images/portrait-hero.jpg`}
+                  alt="Marketing Director portrait"
+                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="eager"
+                />
+              </div>
+            </div>
+
+            <!-- Corner aesthetic accent detail -->
+            <div class="hidden sm:block absolute -top-3 -left-3 w-20 h-20 border-t-2 border-l-2 border-stone-300/80 rounded-tl-3xl -z-10"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Section 2: About Me (#about) -->
+    <section id="about" class="py-24 bg-stone-100/70 border-y border-stone-200 relative overflow-hidden">
+      <!-- Subtle ambient background glow -->
+      <div class="absolute top-1/2 -left-20 w-96 h-96 bg-amber-100/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <!-- Left Column: Framed Editorial Portrait -->
+          <div class="lg:col-span-5">
+            <div class="relative group">
+              <!-- Decorative matte frame -->
+              <div class="relative rounded-3xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] border border-stone-200 bg-white p-3 sm:p-4">
+                <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-stone-100 relative">
+                  <img
+                    src={`${baseUrl}/images/portrait.jpg`}
+                    alt="Marketing Director portrait"
+                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <!-- Corner aesthetic detail -->
+              <div class="hidden sm:block absolute -bottom-3 -right-3 w-24 h-24 border-b-2 border-r-2 border-stone-300/80 rounded-br-3xl -z-10"></div>
+            </div>
+          </div>
+
+          <!-- Right Column: Narrative Biography & Philosophy -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="space-y-2">
+              <div class="text-xs font-mono font-semibold uppercase tracking-wider text-stone-600">About Me</div>
+              <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight leading-tight">
+                Bridging analytical rigor with intuitive brand conviction.
+              </h2>
+            </div>
+
+            <div class="space-y-4 text-stone-600 text-sm sm:text-base leading-relaxed">
+              <p>
+                Over the past eight years, I have served as a brand architect and growth catalyst for venture-backed tech scale-ups, global lifestyle brands, and category-defining enterprises.
+              </p>
+              <p>
+                My philosophy centers on a fundamental conviction: sustainable commercial velocity happens at the intersection of distinctive creative storytelling and empirical distribution. Great creative without a quantitative funnel fails to scale; numbers without emotional resonance commoditize the product.
+              </p>
+              <p>
+                Whether orchestrating a 360° global product launch, realigning customer acquisition models, or directing multi-channel corporate rebrands, I focus on building repeatable marketing engines designed to compound long-term equity.
+              </p>
+            </div>
+
+            <!-- Profile Summary Points -->
+            <div class="pt-4 border-t border-stone-200/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-white border border-stone-200/80 shadow-sm space-y-1">
+                <div class="font-mono text-[11px] font-bold uppercase tracking-wider text-stone-500">Core Expertise</div>
+                <div class="text-sm font-semibold text-stone-900">GTM Strategy, Brand Architecture, Demand Gen, Lifecycle CRM</div>
+              </div>
+              <div class="p-4 rounded-xl bg-white border border-stone-200/80 shadow-sm space-y-1">
+                <div class="font-mono text-[11px] font-bold uppercase tracking-wider text-stone-500">Industry Experience</div>
+                <div class="text-sm font-semibold text-stone-900">B2B SaaS, Direct-to-Consumer, Enterprise Tech, Experiential Events</div>
+              </div>
+            </div>
+
+            <!-- Secondary Actions -->
+            <div class="pt-2 flex flex-wrap items-center gap-4">
+              <a
+                href="#work"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold tracking-wide uppercase bg-stone-900 text-stone-50 hover:bg-stone-800 shadow-sm transition-all cursor-pointer"
+              >
+                <span>View Case Studies</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+              <a
+                href="#contact"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold tracking-wide uppercase bg-white text-stone-800 hover:bg-stone-100 border border-stone-300 shadow-sm transition-all cursor-pointer"
+              >
+                <span>Get In Touch</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+      CORE DISCIPLINES (Commented out for future reference)
+      =========================================================================
+    <section id="disciplines" class="py-24 bg-stone-100/70 border-y border-stone-200">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-2xl mb-14 space-y-3">
+          <div class="text-xs font-mono font-semibold uppercase tracking-wider text-stone-600">Core Disciplines</div>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 tracking-tight">
+            Comprehensive marketing orchestration from seed to scale.
+          </h2>
+          <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+            Uniting creative storytelling with analytical rigor to drive sustainable commercial velocity.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="p-8 rounded-2xl bg-white border border-stone-200 shadow-sm space-y-3">
+            <div class="font-mono text-xs font-semibold text-stone-600 uppercase tracking-widest">Pillar 01</div>
+            <h3 class="font-serif text-xl font-bold text-stone-900">Go-To-Market (GTM) Strategy & Product Launches</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">
+              Defining ideal customer profiles, pricing architectures, competitive battlecards, and synchronized 360° launch timelines coordinating PR, digital, and sales enablement.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-2xl bg-white border border-stone-200 shadow-sm space-y-3">
+            <div class="font-mono text-xs font-semibold text-stone-600 uppercase tracking-widest">Pillar 02</div>
+            <h3 class="font-serif text-xl font-bold text-stone-900">Multi-Channel Performance & Demand Generation</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">
+              Managing full-funnel paid acquisition across Meta, LinkedIn, Google Search, and programmatic OOH, continuously testing messaging variants to optimize CAC and pipeline throughput.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-2xl bg-white border border-stone-200 shadow-sm space-y-3">
+            <div class="font-mono text-xs font-semibold text-stone-600 uppercase tracking-widest">Pillar 03</div>
+            <h3 class="font-serif text-xl font-bold text-stone-900">Brand Architecture & Thought Leadership</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">
+              Crafting distinct brand positioning, executive thought leadership engines, industry benchmark publications, and award-winning corporate design identities.
+            </p>
+          </div>
+
+          <div class="p-8 rounded-2xl bg-white border border-stone-200 shadow-sm space-y-3">
+            <div class="font-mono text-xs font-semibold text-stone-600 uppercase tracking-widest">Pillar 04</div>
+            <h3 class="font-serif text-xl font-bold text-stone-900">Lifecycle Marketing, Retention & Experiential</h3>
+            <p class="text-stone-600 text-sm leading-relaxed">
+              Constructing automated onboarding email sequences, customer advocacy initiatives, and high-impact flagship conferences that foster enduring community loyalty.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-12 p-8 rounded-2xl bg-white/70 border border-stone-200 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="space-y-1">
+            <div class="font-mono text-xs font-bold text-stone-600">01 / NARRATIVE-FIRST</div>
+            <div class="font-serif text-base font-bold text-stone-900">Emotional Resonance</div>
+            <p class="text-xs text-stone-600 leading-relaxed">Differentiating products by connecting directly with buyer ambitions.</p>
+          </div>
+          <div class="space-y-1">
+            <div class="font-mono text-xs font-bold text-stone-600">02 / INCREMENTAL</div>
+            <div class="font-serif text-base font-bold text-stone-900">Empirical Attribution</div>
+            <p class="text-xs text-stone-600 leading-relaxed">Continuous testing of marketing lift rather than reliance on vanity clicks.</p>
+          </div>
+          <div class="space-y-1">
+            <div class="font-mono text-xs font-bold text-stone-600">03 / COHESIVE</div>
+            <div class="font-serif text-base font-bold text-stone-900">Cross-Functional Flywheel</div>
+            <p class="text-xs text-stone-600 leading-relaxed">Aligning sales, product roadmap, and brand storytelling into a single beat.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    ========================================================================= -->
+
+    <!-- Section 3: Work Gallery (#work) -->
+    <section id="work" class="py-24 max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mb-12 space-y-3">
+        <div class="text-xs font-mono font-semibold uppercase tracking-wider text-stone-600">Exhibition Wall</div>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 tracking-tight">
+          Curated Campaign Artifacts
+        </h2>
+        <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+          Examine selected flagship launches, quantitative growth engines, and experiential activations. Select any artifact placard to review strategic frameworks and commercial outcomes.
+        </p>
+      </div>
+
+      <!-- Svelte Island Lazy Hydrated with client:visible -->
+      <WorkGallery client:visible artifacts={artifacts} />
+    </section>
+
+    <!-- Section 4: Contact (#contact) -->
+    <section id="contact" class="py-24 bg-white border-t border-stone-200">
+      <div class="max-w-4xl mx-auto px-6 text-center space-y-8">
+        <div class="space-y-3">
+          <div class="text-xs font-mono font-semibold uppercase tracking-wider text-stone-600">Initiate Dialogue</div>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-stone-900 tracking-tight">
+            Ready to scale your brand's market presence?
+          </h2>
+          <p class="text-stone-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+            Currently discussing full-time marketing leadership, board advisory, and fractional GTM consulting engagements.
+          </p>
+        </div>
+
+        <div class="pt-2 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="mailto:hello@example.com"
+            class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full font-semibold text-xs tracking-wider uppercase bg-stone-900 text-stone-50 hover:bg-stone-800 shadow-md hover:shadow-lg transition-all cursor-pointer"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span>Start a Conversation</span>
+          </a>
+          <a
+            href="https://linkedin.com/in/example"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-4 rounded-full font-semibold text-xs tracking-wider uppercase bg-white text-stone-800 hover:bg-stone-100 border border-stone-300 shadow-sm transition-all cursor-pointer"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28m1.4 9.74v-8.37H5.06v8.37h2.8z" />
+            </svg>
+            <span>LinkedIn Profile</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Minimal Editorial Footer -->
+  <footer class="py-10 border-t border-stone-200 bg-[#faf8f5] text-center text-xs font-mono text-stone-600">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        © {new Date().getFullYear()} Marketing Director & Brand Strategist • Portfolio Template
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="hover:text-stone-900 transition-colors">Return to top ↑</a>
+      </div>
+    </div>
+  </footer>
+</Layout>
