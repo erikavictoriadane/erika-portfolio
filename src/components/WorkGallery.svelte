@@ -481,7 +481,8 @@
     }
   }
 
-  function promptDeleteArtifact(artifact: ArtifactItem) {
+  function promptDeleteArtifact(artifact: ArtifactItem | null | undefined) {
+    if (!artifact) return;
     artifactToDelete = artifact;
     if (deleteDialogRef) {
       deleteDialogRef.showModal();
@@ -1577,7 +1578,10 @@
             {#if !isCreatingNew}
               <button
                 type="button"
-                onclick={() => promptDeleteArtifact(localArtifacts.find((a) => a.id === editorData.id) || null)}
+                onclick={() => {
+                  const target = localArtifacts.find((a) => a.id === editorData.id);
+                  if (target) promptDeleteArtifact(target);
+                }}
                 class="px-4 py-2 rounded-full text-xs font-mono text-rose-600 hover:bg-rose-50 border border-rose-200 transition cursor-pointer"
               >
                 Delete Artifact
