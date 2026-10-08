@@ -1,15 +1,14 @@
 ---
 title: "Strategic Growth Engine: Full-Funnel B2B Optimization"
 description: "Architected a quantitative growth and experimentation loop combining product-led acquisition, automated email nurture sequences, and paid search scale."
-tags: ["Growth", "Analytics", "Lifecycle"]
+tags: ["Growth","Analytics","Lifecycle"]
 link: "https://example.com/growth-framework"
 date: "2026-01-15"
 featured: true
 previewImage: "/previews/growth-experimentation.jpg"
 metrics: "+165% Qualified Pipeline"
-order: 2
+order: 3
 ---
-
 ### Background & Strategic Objectives
 Faced with plateauing organic demo requests and escalating blended customer acquisition costs (CAC), the enterprise SaaS business required a unified growth framework. The objective was to replace disjointed ad hoc marketing tactics with a rigorous, hypotheses-driven experimentation engine that accelerated velocity from visitor awareness to enterprise contract close.
 

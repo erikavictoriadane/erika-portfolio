@@ -44,7 +44,7 @@ astro_portfolio/
 │   ├── favicon.svg                # Monogram luxury icon
 │   ├── images/
 │   │   ├── portrait.jpg           # About Me section portrait (museum mat board frame)
-│   │   └── portrait-hero.jpg      # Hero section companion portrait
+│   │   └── portrait-hero-white-shirt.jpg # Hero section companion portrait
 │   ├── previews/                  # Cover images, video posters, and supporting collateral
 │   └── videos/                    # Optional local self-hosted MP4/WebM files
 ├── src/

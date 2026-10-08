@@ -19,7 +19,7 @@ flowchart LR
 1. **Fork or Branch the Repository**:
    - In GitHub, click **Fork** (or create a dedicated client branch).
 2. **Personalize Branding & Visuals**:
-   - Replace portraits: `public/images/portrait-hero.jpg` and `public/images/portrait.jpg`.
+   - Replace portraits: `public/images/portrait-hero-white-shirt.jpg` and `public/images/portrait.jpg`.
    - Update metadata, titles, and biography in `src/pages/index.astro` and `src/layouts/Layout.astro`.
    - Update favicon if desired: `public/favicon.svg`.
 3. **Curate Case Studies**:

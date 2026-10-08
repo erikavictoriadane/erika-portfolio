@@ -210,28 +210,33 @@
   function renderFormattedBody(markdown: string = ''): string {
     if (!markdown) return '';
     return markdown
+      // Horizontal rules
+      .replace(/^---$/gim, '<hr class="my-3 border-stone-200/60" />')
       // Markdown Images: ![alt](url)
       .replace(/!\[(.*?)\]\((.*?)\)/g, (_match, alt, src) => {
         const resolvedSrc = resolveUrl(src);
         const captionHtml = alt
-          ? `<figcaption class="py-2.5 px-4 text-center text-xs font-mono text-stone-600 bg-white/95 border-t border-stone-200/80 flex items-center justify-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-stone-400 inline-block"></span>${alt}</figcaption>`
+          ? `<figcaption class="w-full py-2 px-4 text-center text-xs font-mono text-stone-600 bg-white/95 border-t border-stone-200/80 flex items-center justify-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-stone-400 inline-block"></span>${alt}</figcaption>`
           : '';
-        return `<figure class="my-6 rounded-xl overflow-hidden border border-stone-200/90 bg-stone-50 shadow-sm transition-all hover:shadow-md">
-          <img src="${resolvedSrc}" alt="${alt || 'Artifact collateral visual'}" class="w-full h-auto object-cover max-h-[440px] block" loading="lazy" />
+        return `<figure class="my-4 rounded-xl overflow-hidden border border-stone-200/90 bg-stone-50 shadow-sm transition-all hover:shadow-md flex flex-col items-center">
+          <img src="${resolvedSrc}" alt="${alt || 'Artifact collateral visual'}" class="max-w-full h-auto max-h-[580px] object-contain mx-auto block" loading="lazy" />
           ${captionHtml}
         </figure>`;
       })
       // Markdown Links: [text](url)
       .replace(/(?<!\!)\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-stone-900 underline underline-offset-2 font-semibold hover:text-stone-600 transition-colors">$1</a>')
-      // Headings
-      .replace(/^### (.*$)/gim, '<h4 class="font-serif text-lg font-bold text-stone-900 mt-7 mb-2.5 flex items-center gap-2.5"><span class="w-2 h-2 rounded-full bg-stone-700 inline-block"></span>$1</h4>')
-      .replace(/^## (.*$)/gim, '<h3 class="font-serif text-xl font-bold text-stone-900 mt-8 mb-3.5 border-b border-stone-200 pb-1.5">$1</h3>')
+      // Blockquotes
+      .replace(/^> (.*$)/gim, '<blockquote class="my-3 pl-4 border-l-2 border-stone-800 text-stone-800 italic font-serif text-base bg-stone-50/80 py-2 px-4 rounded-r-lg">$1</blockquote>')
+      // Headings (no dots, larger font size, reduced top padding for easy skimming)
+      .replace(/^#### (.*$)/gim, '<h5 class="font-serif text-base sm:text-lg font-bold text-stone-900 mt-4 mb-1.5 tracking-tight">$1</h5>')
+      .replace(/^### (.*$)/gim, '<h4 class="font-serif text-xl sm:text-2xl font-bold text-stone-900 mt-5 first:mt-1 mb-2 tracking-tight">$1</h4>')
+      .replace(/^## (.*$)/gim, '<h3 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mt-6 first:mt-1 mb-2 border-b border-stone-200 pb-1 tracking-tight">$1</h3>')
       // Typography
       .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-stone-900">$1</strong>')
       .replace(/\*(.*?)\*/g, '<em class="italic text-stone-800">$1</em>')
       .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-stone-100 text-stone-800 font-mono text-xs border border-stone-200">$1</code>')
-      .replace(/^- (.*$)/gim, '<li class="ml-4 list-disc text-stone-700 mb-2 leading-relaxed marker:text-stone-400">$1</li>')
-      .replace(/\n\n/g, '<div class="h-3"></div>');
+      .replace(/^- (.*$)/gim, '<li class="ml-4 list-disc text-stone-700 mb-1.5 leading-relaxed marker:text-stone-400">$1</li>')
+      .replace(/\n\n/g, '<div class="h-2"></div>');
   }
 
   // --- DEV EDITOR ACTIONS ---
@@ -680,7 +685,7 @@
             type="button"
             class="relative w-full aspect-[16/10] overflow-hidden bg-stone-100 border-b border-stone-100 cursor-pointer block text-left p-0 border-0"
             onclick={() => openModal(artifact)}
-            aria-label={"Examine case study: " + artifact.title}
+            aria-label={"View case study: " + artifact.title}
           >
             {#if artifact.previewImage}
               <img
@@ -844,7 +849,7 @@
                 class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-stone-900 text-stone-50 hover:bg-stone-800 focus:ring-2 focus:ring-stone-400 focus:outline-none transition-all cursor-pointer shadow-sm group-hover:shadow shrink-0 ml-auto"
                 aria-haspopup="dialog"
               >
-                <span>{artifact.mediaType === 'video' ? 'Watch' : 'Examine'}</span>
+                <span>{artifact.mediaType === 'video' ? 'Watch' : 'View'}</span>
                 <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
@@ -976,16 +981,14 @@
             </div>
           {/if}
 
-          <!-- Executive Summary Callout -->
-          <div class="p-5 rounded-xl bg-white border border-stone-200/90 shadow-sm text-stone-700 leading-relaxed font-normal">
-            <span class="font-mono text-xs uppercase tracking-wider text-stone-400 block mb-1">Executive Summary</span>
-            {activeArtifact.description}
-          </div>
-
           <!-- Markdown Case Study Body (Supports inline images ![Alt](url)) -->
           {#if activeArtifact.body}
             <div class="prose prose-stone max-w-none text-stone-700">
               {@html renderFormattedBody(activeArtifact.body)}
+            </div>
+          {:else if activeArtifact.description}
+            <div class="text-stone-700 leading-relaxed font-normal">
+              {activeArtifact.description}
             </div>
           {/if}
 
@@ -993,8 +996,7 @@
           {#if activeArtifact.galleryImages && activeArtifact.galleryImages.length > 0}
             <div class="space-y-3 pt-4 border-t border-stone-200/90">
               <div class="flex items-center justify-between">
-                <h4 class="font-serif text-base font-bold text-stone-900 flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-stone-700 inline-block"></span>
+                <h4 class="font-serif text-lg sm:text-xl font-bold text-stone-900 tracking-tight">
                   Supporting Collateral & Assets ({activeArtifact.galleryImages.length})
                 </h4>
                 <span class="text-[11px] font-mono text-stone-500">Curated Exhibition</span>
@@ -1321,10 +1323,10 @@
             {/if}
           </div>
 
-          <!-- Executive Summary -->
+          <!-- Project Overview -->
           <div class="p-5 rounded-xl bg-white border border-stone-200 shadow-sm space-y-2">
             <label for="editor-description" class="font-mono text-xs uppercase tracking-wider text-stone-500 font-bold block">
-              Executive Summary * (Required)
+              Project Overview * (Required)
             </label>
             <textarea
               id="editor-description"

@@ -1,18 +1,15 @@
 ---
 title: "Orígens Collective: Global Omnichannel Launch Campaign"
 description: "Spearheaded an integrated 360° global product launch across digital paid channels, high-impact OOH placements, and curated influencer activations."
-tags: ["Campaigns", "Brand Strategy", "GTM"]
+tags: ["Campaigns","Brand Strategy","GTM"]
 link: "https://example.com/origens-campaign"
 date: "2025-11-20"
 featured: true
 previewImage: "/previews/campaign-omnichannel.jpg"
 metrics: "+240% First-Month Sales Target"
-order: 1
-galleryImages:
-  - "/previews/campaign-packaging.jpg"
-  - "/previews/campaign-billboard.jpg"
+order: 2
+galleryImages: ["/previews/campaign-packaging.jpg","/previews/campaign-billboard.jpg"]
 ---
-
 ### Background & Strategic Objectives
 Orígens Collective sought to enter a crowded premium lifestyle market without resorting to commodity promotional discounting. The challenge was building immediate brand resonance, establishing sustainable beauty credentials, and creating seamless continuity between experiential retail pop-ups and direct-to-consumer digital channels.
 

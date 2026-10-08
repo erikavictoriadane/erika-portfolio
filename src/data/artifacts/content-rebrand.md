@@ -1,15 +1,14 @@
 ---
 title: "Arqué Design: Global Brand Repositioning & Content Hub"
 description: "Directed end-to-end brand identity evolution, comprehensive editorial style guides, and an authoritative thought leadership content engine."
-tags: ["Brand Strategy", "Content", "Creative Direction"]
+tags: ["Brand Strategy","Content","Creative Direction"]
 link: "https://example.com/arque-rebrand"
 date: "2025-09-10"
 featured: false
 previewImage: "/previews/content-rebrand.jpg"
 metrics: "3.4x Inbound Organic Leads"
-order: 3
+order: 4
 ---
-
 ### Background & Strategic Objectives
 Following a series of product expansions, the corporate identity had grown fragmented, dated, and unrepresentative of the brand's premium enterprise capabilities. The rebrand required repositioning the company from a tactical utility into an essential design authority trusted by Fortune 500 creative directors.
 
