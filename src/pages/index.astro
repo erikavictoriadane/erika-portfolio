@@ -185,48 +185,45 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
             <div class="space-y-2">
               <div class="text-xs font-mono font-semibold uppercase tracking-wider text-stone-600">About Me</div>
               <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight leading-tight">
-                Bridging analytical rigor with intuitive brand conviction.
+                The short version.
               </h2>
             </div>
 
             <div class="space-y-4 text-stone-600 text-sm sm:text-base leading-relaxed">
               <p>
-                Over the past eight years, I have served as a brand architect and growth catalyst for venture-backed tech scale-ups, global lifestyle brands, and category-defining enterprises.
+                I'm a marketing strategist who loves figuring out how to make things work better. That could mean finding a new way to reach an audience, prototyping designs for A/B tests, or turning a complicated idea into something people can connect with emotionally.
               </p>
               <p>
-                My philosophy centers on a fundamental conviction: sustainable commercial velocity happens at the intersection of distinctive creative storytelling and empirical distribution. Great creative without a quantitative funnel fails to scale; numbers without emotional resonance commoditize the product.
+                My experience spans brand strategy, integrated marketing, customer engagement, and growth. I've worked across industries and audiences, bringing together creative thinking, customer insights, and performance data to develop marketing that delivers measurable results.
               </p>
               <p>
-                Whether orchestrating a 360° global product launch, realigning customer acquisition models, or directing multi-channel corporate rebrands, I focus on building repeatable marketing engines designed to compound long-term equity.
+                I'm especially interested in how technology and AI are changing what's possible in marketing. I enjoy experimenting with new tools, challenging cumbersome processes, and finding faster, smarter ways to bring ideas to life.
+              </p>
+              <p>
+                What motivates me most is the opportunity to work with people, create something meaningful, and see the impact of my work.
+              </p>
+              <p>
+                Outside of work, you'll usually find me dancing, discovering new music, exploring somewhere new, or hunting down a really good cup of coffee. More recently, I've added puppy mom to my résumé thanks to Moki, my Shih Tzu, who's keeping me on my toes.
+              </p>
+              <p>
+                I'm endlessly curious about people, places, and experiences, and I believe the best ideas often come from the connections we make between them.
               </p>
             </div>
 
-            <!-- Profile Summary Points -->
-            <div class="pt-4 border-t border-stone-200/80 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="p-4 rounded-xl bg-white border border-stone-200/80 shadow-sm space-y-1">
-                <div class="font-mono text-[11px] font-bold uppercase tracking-wider text-stone-500">Core Expertise</div>
-                <div class="text-sm font-semibold text-stone-900">GTM Strategy, Brand Architecture, Demand Gen, Lifecycle CRM</div>
-              </div>
-              <div class="p-4 rounded-xl bg-white border border-stone-200/80 shadow-sm space-y-1">
-                <div class="font-mono text-[11px] font-bold uppercase tracking-wider text-stone-500">Industry Experience</div>
-                <div class="text-sm font-semibold text-stone-900">B2B SaaS, Direct-to-Consumer, Enterprise Tech, Experiential Events</div>
-              </div>
-            </div>
-
-            <!-- Secondary Actions -->
+            <!-- Actions -->
             <div class="pt-2 flex flex-wrap items-center gap-4">
               <a
                 href="#work"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold tracking-wide uppercase bg-stone-900 text-stone-50 hover:bg-stone-800 shadow-sm transition-all cursor-pointer"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold tracking-wider uppercase bg-stone-900 text-stone-50 hover:bg-stone-800 shadow-sm transition-all cursor-pointer"
               >
-                <span>View Case Studies</span>
+                <span>View My Work</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
               <a
                 href="#contact"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold tracking-wide uppercase bg-white text-stone-800 hover:bg-stone-100 border border-stone-300 shadow-sm transition-all cursor-pointer"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold tracking-wider uppercase bg-white text-stone-800 hover:bg-stone-100 border border-stone-300 shadow-sm transition-all cursor-pointer"
               >
                 <span>Get In Touch</span>
               </a>
@@ -322,43 +319,211 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
       <WorkGallery client:visible artifacts={artifacts} />
     </section>
 
-    <!-- Section 4: Contact (#contact) -->
-    <section id="contact" class="py-24 bg-white border-t border-stone-200">
-      <div class="max-w-4xl mx-auto px-6 text-center space-y-8">
-        <div class="space-y-3">
-          <div class="text-xs font-mono font-semibold uppercase tracking-wider text-stone-600">Initiate Dialogue</div>
-          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-stone-900 tracking-tight">
-            Ready to scale your brand's market presence?
-          </h2>
-          <p class="text-stone-600 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Currently discussing full-time marketing leadership, board advisory, and fractional GTM consulting engagements.
-          </p>
+    <!-- Section 4: Recent Adventures & Connect (#contact) -->
+    <section id="contact" class="py-20 sm:py-24 bg-white border-t border-stone-200">
+      <div class="max-w-6xl mx-auto px-6 space-y-16 sm:space-y-20">
+        <!-- Part A: Recent Adventures Gallery -->
+        <div class="space-y-6">
+          <div class="text-center space-y-1.5">
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 tracking-tight">
+              Recent Adventures
+            </h2>
+          </div>
+
+          <!-- 5-Image Curated Adventures Grid -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
+            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/90 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+              <img
+                src={`${baseUrl}/images/adventures/adventure-1.jpg`}
+                alt="Botanical garden illuminated neon path"
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/90 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+              <img
+                src={`${baseUrl}/images/adventures/adventure-2.jpg`}
+                alt="Henna lace design in cafe"
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/90 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+              <img
+                src={`${baseUrl}/images/adventures/adventure-3.jpg`}
+                alt="Playful puppy"
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/90 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+              <img
+                src={`${baseUrl}/images/adventures/adventure-4.jpg`}
+                alt="Cozy bookstore coffee"
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/90 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 col-span-2 sm:col-span-1">
+              <img
+                src={`${baseUrl}/images/adventures/adventure-5.jpg`}
+                alt="Artisan wood-fired mushroom pizza"
+                class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+          </div>
         </div>
 
-        <div class="pt-2 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="mailto:hello@example.com"
-            class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full font-semibold text-xs tracking-wider uppercase bg-stone-900 text-stone-50 hover:bg-stone-800 shadow-md hover:shadow-lg transition-all cursor-pointer"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <span>Start a Conversation</span>
-          </a>
-          <a
-            href="https://linkedin.com/in/example"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-6 py-4 rounded-full font-semibold text-xs tracking-wider uppercase bg-white text-stone-800 hover:bg-stone-100 border border-stone-300 shadow-sm transition-all cursor-pointer"
-          >
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28m1.4 9.74v-8.37H5.06v8.37h2.8z" />
-            </svg>
-            <span>LinkedIn Profile</span>
-          </a>
+        <!-- Part B: Meeting Request, Follow & Spotify Grid -->
+        <div class="pt-10 border-t border-stone-200/80 grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 items-start">
+          <!-- Column 1: Request a Meeting With Me -->
+          <div class="md:col-span-5 space-y-5">
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
+              Request a meeting with me!
+            </h3>
+
+            <form id="meeting-form" class="space-y-3">
+              <div>
+                <input
+                  type="text"
+                  name="firstName"
+                  id="meeting-first-name"
+                  required
+                  placeholder="First Name"
+                  class="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200/90 text-stone-900 placeholder:text-stone-400 text-sm focus:outline-none focus:ring-2 focus:ring-stone-400 focus:bg-white transition-all shadow-sm"
+                />
+              </div>
+              <div>
+                <input
+                  type="text"
+                  name="lastName"
+                  id="meeting-last-name"
+                  required
+                  placeholder="Last Name"
+                  class="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200/90 text-stone-900 placeholder:text-stone-400 text-sm focus:outline-none focus:ring-2 focus:ring-stone-400 focus:bg-white transition-all shadow-sm"
+                />
+              </div>
+              <div>
+                <input
+                  type="email"
+                  name="email"
+                  id="meeting-email"
+                  required
+                  placeholder="Email Address"
+                  class="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200/90 text-stone-900 placeholder:text-stone-400 text-sm focus:outline-none focus:ring-2 focus:ring-stone-400 focus:bg-white transition-all shadow-sm"
+                />
+              </div>
+              <div class="pt-1">
+                <button
+                  type="submit"
+                  class="w-full sm:w-auto px-8 py-3.5 rounded-full font-semibold text-xs tracking-wider uppercase bg-stone-900 text-stone-50 hover:bg-stone-800 shadow-md hover:shadow-lg transition-all cursor-pointer"
+                >
+                  LET'S GET STARTED!
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Column 2: Follow Me & Quick Links -->
+          <div class="md:col-span-3 space-y-6 md:pt-1">
+            <div class="space-y-3">
+              <h4 class="font-serif text-lg font-bold text-stone-900">
+                Follow Me
+              </h4>
+              <div class="flex items-center gap-3">
+                <a
+                  href="https://linkedin.com/in/example"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-800 hover:scale-105 transition-all shadow-sm"
+                  aria-label="LinkedIn profile"
+                >
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.64 1.64 0 1 0 0-3.28 1.64 1.64 0 0 0 0 3.28m1.4 9.74v-8.37H5.06v8.37h2.8z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-800 hover:scale-105 transition-all shadow-sm"
+                  aria-label="Instagram profile"
+                >
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://open.spotify.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-800 hover:scale-105 transition-all shadow-sm"
+                  aria-label="Spotify profile"
+                >
+                  <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.502 17.307c-.218.358-.683.473-1.042.254-2.855-1.745-6.449-2.14-10.683-1.171-.41.093-.817-.163-.91-.572-.093-.41.163-.817.572-.91 4.636-1.06 8.608-.614 11.809 1.346.358.218.473.683.254 1.053zm1.468-3.266c-.274.446-.86.588-1.306.314-3.267-2.008-8.248-2.589-12.112-1.416-.503.152-1.037-.137-1.189-.64-.152-.503.137-1.037.64-1.189 4.417-1.341 9.907-.697 13.653 1.608.446.274.588.86.314 1.323zm.126-3.41c-3.918-2.327-10.37-2.542-14.099-1.41-.601.183-1.24-.165-1.423-.766-.183-.601.165-1.24.766-1.423 4.288-1.302 11.411-1.047 15.918 1.629.541.321.718 1.023.397 1.564-.321.541-1.023.718-1.559.406z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="space-y-2.5 pt-1">
+              <div>
+                <a
+                  href="#about"
+                  class="text-sm font-semibold text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition-colors"
+                >
+                  About Me
+                </a>
+              </div>
+              <div>
+                <a
+                  href="#work"
+                  class="text-sm font-semibold text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition-colors"
+                >
+                  All Work Samples
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 3: Listen with me (Spotify Player) -->
+          <div class="md:col-span-4 space-y-3 md:pt-1">
+            <h4 class="font-serif text-lg font-bold text-stone-900 flex items-center gap-2">
+              <span>Listen with me</span>
+              <span class="text-base font-normal">🎶</span>
+            </h4>
+            <div class="rounded-2xl overflow-hidden shadow-sm border border-stone-200/90 bg-stone-900">
+              <iframe
+                data-testid="embed-iframe"
+                style="border-radius:12px"
+                src="https://open.spotify.com/embed/playlist/6OqIdxKvxiBv2esnfS2uKb?utm_source=generator"
+                class="w-full h-[352px] border-0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title="Listen with me Spotify playlist"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <script>
+      const meetingForm = document.getElementById('meeting-form') as HTMLFormElement | null;
+      if (meetingForm) {
+        meetingForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const firstName = (meetingForm.elements.namedItem('firstName') as HTMLInputElement)?.value || '';
+          const lastName = (meetingForm.elements.namedItem('lastName') as HTMLInputElement)?.value || '';
+          const email = (meetingForm.elements.namedItem('email') as HTMLInputElement)?.value || '';
+          const subject = encodeURIComponent(`Meeting Request from ${firstName} ${lastName}`);
+          const body = encodeURIComponent(`Name: ${firstName} ${lastName}\nEmail: ${email}\n\nHi Erika,\nI would like to schedule a meeting with you!`);
+          window.location.href = `mailto:hello@example.com?subject=${subject}&body=${body}`;
+        });
+      }
+    </script>
   </main>
 
   <!-- Minimal Editorial Footer -->
