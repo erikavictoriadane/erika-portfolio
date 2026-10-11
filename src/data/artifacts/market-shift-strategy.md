@@ -4,7 +4,7 @@ description: "How  I translated changes in patient discovery into practical guid
 tags: ["Integrated Marketing","Content Strategy","Healthcare","Campaigns"]
 showLiveLink: false
 date: "2026-09-30"
-showDate: true
+showDate: false
 featured: true
 hidden: false
 previewImage: "/previews/market-shift-landing-page.png"

@@ -224,7 +224,7 @@
         </figure>`;
       })
       // Markdown Links: [text](url)
-      .replace(/(?<!\!)\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-stone-900 underline underline-offset-2 font-semibold hover:text-stone-600 transition-colors">$1</a>')
+      .replace(/(?<!\!)\[(.*?)\]\((.*?)\)/g, (_match, text, href) => `<a href="${resolveUrl(href)}" target="_blank" rel="noopener noreferrer" class="text-stone-900 underline underline-offset-2 font-semibold hover:text-stone-600 transition-colors">${text}</a>`)
       // Blockquotes
       .replace(/^> (.*$)/gim, '<blockquote class="my-3 pl-4 border-l-2 border-stone-800 text-stone-800 italic font-serif text-base bg-stone-50/80 py-2 px-4 rounded-r-lg">$1</blockquote>')
       // Headings (no dots, larger font size, reduced top padding for easy skimming)
