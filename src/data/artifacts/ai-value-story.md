@@ -1,7 +1,7 @@
 ---
 title: "WebMD Care: Adapting the Value Story for the AI Search Era"
 description: "How I reframed physician directory value amid AI search through executive positioning, sales enablement decks, objection playbooks, and training."
-tags: ["Product Positioning","Messaging Strategy","Sales Enablement","Healthcare"]
+tags: ["Product Positioning","Sales Enablement","Healthcare"]
 showLiveLink: false
 date: "2026-10-04"
 showDate: false
@@ -44,9 +44,10 @@ The new AI-search positioning and supporting resources rolled out in March 2026.
 AI search was changing the way patients discovered care, which challenged traditional ideas about what it meant for a healthcare practice to be "visible" online.
 
 We needed to answer three questions:
-1. **What does provider visibility mean as patient search and discovery evolve?**
-2. **What does that change mean for healthcare practices?**
-3. **Where does WebMD's physician directory fit?**
+
+- **What does provider visibility mean as patient search and discovery evolve?**
+- **What does that change mean for healthcare practices?**
+- **Where does WebMD's physician directory fit?**
 
 The challenge was to turn a complicated topic into a story that was easy to understand and easy for Sales to use.
 
@@ -91,21 +92,21 @@ I led the research, messaging, narrative development, and presentation creation,
 ### Putting the Positioning into Practice
 I developed supporting resources that distilled the larger strategy into practical materials Sales and Account Managers could reference and use in customer conversations:
 
-#### 1. The AI Answer Era: How Physicians Win in 2026
+#### The AI Answer Era: How Physicians Win in 2026
 A customer-facing guide that translates changes in AI-powered search into actionable strategies for improving provider visibility.
 
 ![The AI Answer Era: How Physicians Win in 2026 — Customer-Facing Educational Guide](/previews/ai-value-story-guide-answer-era.png)
 
 📄 **[Download The AI Answer Era Guide (PDF)](/documents/The_AI_Answer_Era_How_Physicians_Win_in_2026.pdf)**
 
-#### 2. Objection Handling: Selling Visibility in the AI Era
+#### Objection Handling: Selling Visibility in the AI Era
 A practical battlecard that equipped Sales with clear responses to common customer questions and objections about AI-powered search.
 
 ![Objection Handling: Selling Visibility in the AI Era — Sales Battlecard](/previews/ai-value-story-guide-objection-handling.png)
 
 📄 **[Download Objection Handling Guide (PDF)](/documents/Objection_Handling_Selling_Visibility_in_the_AI_Era.pdf)**
 
-#### 3. Maintaining Visibility in the AI Era
+#### Maintaining Visibility in the AI Era
 A resource to help Account Managers reframe performance concerns around visibility and guide customers toward actions that reinforce the value of their WebMD Care profile.
 
 ![Maintaining Visibility in the AI Era — AM Retention Guide](/previews/ai-value-story-guide-maintaining-visibility.png)

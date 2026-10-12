@@ -1,7 +1,7 @@
 ---
 title: "WebMD Care: Turning a Market Shift Into a Marketing Strategy"
 description: "How  I translated changes in patient discovery into practical guides, video, multi-channel collateral, and attributed revenue."
-tags: ["Integrated Marketing","Content Strategy","Healthcare","Campaigns"]
+tags: ["Integrated Marketing","Content Strategy","Healthcare"]
 showLiveLink: false
 date: "2026-09-30"
 showDate: false
