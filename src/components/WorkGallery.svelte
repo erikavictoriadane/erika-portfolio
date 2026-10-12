@@ -45,6 +45,7 @@
   let activeArtifact = $state<ArtifactItem | null>(null);
   let modalHeroImage = $state<string | null>(null);
   let dialogRef = $state<HTMLDialogElement | null>(null);
+  let modalScrollContainer = $state<HTMLDivElement | null>(null);
 
   // Dev-only state
   let devServerReady = $state(false);
@@ -132,11 +133,33 @@
     }, 3500);
   }
 
-  // Derive unique tags from local artifacts
+  // Tag strip collapse/expand state
+  let isTagsExpanded = $state(false);
+  const COLLAPSED_TAG_LIMIT = 7;
+
+  // Derive unique tags from local artifacts sorted by frequency (most used first), then alphabetical
   let allTags = $derived([
     'All',
-    ...Array.from(new Set(localArtifacts.flatMap((a) => a.tags || []))).sort()
+    ...Array.from(new Set(localArtifacts.flatMap((a) => a.tags || []))).sort((a, b) => {
+      const countA = localArtifacts.filter((art) => art.tags && art.tags.includes(a)).length;
+      const countB = localArtifacts.filter((art) => art.tags && art.tags.includes(b)).length;
+      if (countB !== countA) return countB - countA;
+      return a.localeCompare(b);
+    })
   ]);
+
+  let visibleTags = $derived.by(() => {
+    if (isTagsExpanded || allTags.length <= COLLAPSED_TAG_LIMIT) {
+      return allTags;
+    }
+    const initial = allTags.slice(0, COLLAPSED_TAG_LIMIT);
+    if (selectedTag !== 'All' && !initial.includes(selectedTag)) {
+      return [...initial, selectedTag];
+    }
+    return initial;
+  });
+
+  let hiddenTagCount = $derived(allTags.length - visibleTags.length);
 
   // Real-time filtered artifacts based on selected tag and search query
   let filteredArtifacts = $derived(
@@ -162,6 +185,26 @@
       })
   );
 
+  function resetModalScroll() {
+    if (dialogRef) {
+      dialogRef.scrollTop = 0;
+    }
+    if (modalScrollContainer) {
+      modalScrollContainer.scrollTop = 0;
+    }
+    requestAnimationFrame(() => {
+      if (dialogRef) dialogRef.scrollTop = 0;
+      if (modalScrollContainer) modalScrollContainer.scrollTop = 0;
+    });
+  }
+
+  // Snap modal scroll to top whenever activeArtifact changes
+  $effect(() => {
+    if (activeArtifact) {
+      resetModalScroll();
+    }
+  });
+
   function openModal(item: ArtifactItem) {
     activeArtifact = item;
     modalHeroImage = item.previewImage || null;
@@ -169,12 +212,14 @@
       dialogRef.showModal();
       document.body.style.overflow = 'hidden';
     }
+    resetModalScroll();
   }
 
   function closeModal() {
     if (dialogRef && dialogRef.open) {
       dialogRef.close();
     }
+    resetModalScroll();
     document.body.style.overflow = '';
   }
 
@@ -185,6 +230,7 @@
   }
 
   function handleDialogClose() {
+    resetModalScroll();
     document.body.style.overflow = '';
   }
 
@@ -639,8 +685,8 @@
 
     <!-- Gallery Wings Filter Strip -->
     <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-stone-200">
-      <span class="text-xs font-mono font-semibold uppercase tracking-wider text-stone-400 mr-2">Discipline:</span>
-      {#each allTags as tag}
+      <span class="text-xs font-mono font-semibold uppercase tracking-wider text-stone-400 mr-2 shrink-0">Discipline:</span>
+      {#each visibleTags as tag}
         <button
           type="button"
           onclick={() => (selectedTag = tag)}
@@ -656,6 +702,27 @@
           {/if}
         </button>
       {/each}
+
+      {#if allTags.length > COLLAPSED_TAG_LIMIT}
+        <button
+          type="button"
+          onclick={() => (isTagsExpanded = !isTagsExpanded)}
+          class="px-3 py-1.5 rounded-full text-xs font-mono font-medium text-stone-600 hover:text-stone-900 bg-stone-100 hover:bg-stone-200 transition-colors cursor-pointer inline-flex items-center gap-1.5 border border-stone-200/90"
+          aria-expanded={isTagsExpanded}
+        >
+          {#if isTagsExpanded}
+            <span>Show fewer</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+            </svg>
+          {:else}
+            <span>+{hiddenTagCount} more</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          {/if}
+        </button>
+      {/if}
     </div>
   </div>
 
@@ -914,7 +981,7 @@
         </div>
 
         <!-- Lightbox Scrollable Content -->
-        <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm">
+        <div bind:this={modalScrollContainer} class="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm">
           <!-- Media Preview (Interactive Video Player or Large Visual Artwork) -->
           {#if activeArtifact.mediaType === 'video' && activeArtifact.videoUrl && modalHeroImage === activeArtifact.previewImage}
             {@const embed = getEmbedUrl(activeArtifact.videoUrl)}
