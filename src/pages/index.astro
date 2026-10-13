@@ -366,42 +366,91 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
             </h3>
 
             <form id="meeting-form" class="space-y-3">
-              <div>
-                <input
-                  type="text"
-                  name="firstName"
-                  id="meeting-first-name"
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <input
+                    type="text"
+                    name="firstName"
+                    id="meeting-first-name"
+                    required
+                    placeholder="First Name *"
+                    class="w-full px-4 py-3 rounded-xl bg-[#efeef1] border border-[#dddedc] text-[#525252] placeholder:text-[#84827e] text-sm focus:outline-none focus:ring-2 focus:ring-[#102f10] focus:bg-white transition-all shadow-sm"
+                  />
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    name="lastName"
+                    id="meeting-last-name"
+                    placeholder="Last Name"
+                    class="w-full px-4 py-3 rounded-xl bg-[#efeef1] border border-[#dddedc] text-[#525252] placeholder:text-[#84827e] text-sm focus:outline-none focus:ring-2 focus:ring-[#102f10] focus:bg-white transition-all shadow-sm"
+                  />
+                </div>
+              </div>
+              <div class="relative">
+                <select
+                  name="topic"
+                  id="meeting-topic"
                   required
-                  placeholder="First Name"
-                  class="w-full px-4 py-3 rounded-xl bg-[#efeef1] border border-[#dddedc] text-[#525252] placeholder:text-[#84827e] text-sm focus:outline-none focus:ring-2 focus:ring-[#102f10] focus:bg-white transition-all shadow-sm"
-                />
+                  class="w-full px-4 py-3 pr-10 rounded-xl bg-[#efeef1] border border-[#dddedc] text-[#525252] text-sm focus:outline-none focus:ring-2 focus:ring-[#102f10] focus:bg-white transition-all shadow-sm appearance-none cursor-pointer"
+                >
+                  <option value="" disabled selected>Select Inquiry Topic *</option>
+                  <option value="Brand Strategy & Advisory">Brand Strategy & Advisory</option>
+                  <option value="Creative Direction & Campaigns">Creative Direction & Campaigns</option>
+                  <option value="Full-Time Leadership Opportunities">Full-Time Leadership Opportunities</option>
+                  <option value="Speaking, Panels & Workshops">Speaking, Panels & Workshops</option>
+                  <option value="Coffee Chat & Networking">Coffee Chat & Networking</option>
+                  <option value="Other Collaboration">Other Collaboration</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-[#84827e]">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
               </div>
               <div>
-                <input
-                  type="text"
-                  name="lastName"
-                  id="meeting-last-name"
-                  required
-                  placeholder="Last Name"
-                  class="w-full px-4 py-3 rounded-xl bg-[#efeef1] border border-[#dddedc] text-[#525252] placeholder:text-[#84827e] text-sm focus:outline-none focus:ring-2 focus:ring-[#102f10] focus:bg-white transition-all shadow-sm"
-                />
+                <textarea
+                  name="message"
+                  id="meeting-message"
+                  rows="3"
+                  placeholder="Subject or project details (optional)"
+                  class="w-full px-4 py-3 rounded-xl bg-[#efeef1] border border-[#dddedc] text-[#525252] placeholder:text-[#84827e] text-sm focus:outline-none focus:ring-2 focus:ring-[#102f10] focus:bg-white transition-all shadow-sm resize-none"
+                ></textarea>
               </div>
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  id="meeting-email"
-                  required
-                  placeholder="Email Address"
-                  class="w-full px-4 py-3 rounded-xl bg-[#efeef1] border border-[#dddedc] text-[#525252] placeholder:text-[#84827e] text-sm focus:outline-none focus:ring-2 focus:ring-[#102f10] focus:bg-white transition-all shadow-sm"
-                />
-              </div>
-              <div class="pt-1">
+              <div class="pt-1 flex flex-col sm:flex-row gap-2.5">
                 <button
                   type="submit"
-                  class="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-xs tracking-wider uppercase bg-[#102f10] text-white hover:bg-[#184418] shadow-sm transition-all cursor-pointer"
+                  id="btn-open-mail"
+                  class="flex-1 px-5 py-3 rounded-full font-bold text-xs tracking-wider uppercase bg-[#102f10] text-white hover:bg-[#184418] shadow-sm transition-all cursor-pointer flex items-center justify-center gap-2"
                 >
-                  LET'S GET STARTED
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                  </svg>
+                  <span>SEND VIA EMAIL APP</span>
+                </button>
+                <button
+                  type="button"
+                  id="btn-open-gmail"
+                  class="flex-1 px-5 py-3 rounded-full font-bold text-xs tracking-wider uppercase bg-white border border-[#102f10] text-[#102f10] hover:bg-[#102f10] hover:text-white shadow-sm transition-all cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.272H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.248l8.073-5.755C21.69 2.28 24 3.434 24 5.457z"/>
+                  </svg>
+                  <span>OPEN IN GMAIL</span>
+                </button>
+              </div>
+              <div class="pt-2 flex items-center justify-between text-xs text-[#84827e]">
+                <span>Direct email:</span>
+                <button
+                  type="button"
+                  id="btn-copy-email"
+                  class="inline-flex items-center gap-1.5 font-mono text-[#102f10] hover:text-[#184418] hover:underline cursor-pointer"
+                  title="Click to copy email address"
+                >
+                  <span id="copy-email-text">erikavictoriadane@gmail.com</span>
+                  <svg class="w-3.5 h-3.5 text-[#84827e]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
                 </button>
               </div>
             </form>
@@ -415,7 +464,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
               </h4>
               <div class="flex items-center gap-3">
                 <a
-                  href="https://linkedin.com/in/example"
+                  href="https://www.linkedin.com/in/erikafinnimore/"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="w-10 h-10 rounded-full bg-[#102f10] text-white flex items-center justify-center hover:bg-[#184418] hover:scale-105 transition-all shadow-sm"
@@ -426,7 +475,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                   </svg>
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/erikavictoriadane/?hl=en"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="w-10 h-10 rounded-full bg-[#102f10] text-white flex items-center justify-center hover:bg-[#184418] hover:scale-105 transition-all shadow-sm"
@@ -437,7 +486,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                   </svg>
                 </a>
                 <a
-                  href="https://open.spotify.com"
+                  href="https://open.spotify.com/user/122824284"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="w-10 h-10 rounded-full bg-[#102f10] text-white flex items-center justify-center hover:bg-[#184418] hover:scale-105 transition-all shadow-sm"
@@ -494,15 +543,64 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
     <script>
       const meetingForm = document.getElementById('meeting-form') as HTMLFormElement | null;
+      const gmailBtn = document.getElementById('btn-open-gmail') as HTMLButtonElement | null;
+      const copyEmailBtn = document.getElementById('btn-copy-email') as HTMLButtonElement | null;
+      const copyEmailText = document.getElementById('copy-email-text') as HTMLSpanElement | null;
+      const TARGET_EMAIL = 'erikavictoriadane@gmail.com';
+
+      function getMailDetails() {
+        if (!meetingForm) return null;
+        const firstName = ((meetingForm.elements.namedItem('firstName') as HTMLInputElement)?.value || '').trim();
+        const lastName = ((meetingForm.elements.namedItem('lastName') as HTMLInputElement)?.value || '').trim();
+        const topic = ((meetingForm.elements.namedItem('topic') as HTMLSelectElement)?.value || '').trim();
+        const message = ((meetingForm.elements.namedItem('message') as HTMLTextAreaElement)?.value || '').trim();
+
+        if (!firstName) {
+          (meetingForm.elements.namedItem('firstName') as HTMLInputElement)?.reportValidity();
+          return null;
+        }
+        if (!topic) {
+          (meetingForm.elements.namedItem('topic') as HTMLSelectElement)?.reportValidity();
+          return null;
+        }
+
+        const fullName = lastName ? `${firstName} ${lastName}` : firstName;
+        const subject = `[Portfolio Inquiry] ${topic} — ${fullName}`;
+        const body = `Hi Erika,\n\nName: ${fullName}\nInquiry Topic: ${topic}\n\n${message ? message : 'I would love to connect with you regarding ' + topic + '.'}\n\nBest,\n${fullName}`;
+
+        return { subject, body };
+      }
+
       if (meetingForm) {
         meetingForm.addEventListener('submit', (e) => {
           e.preventDefault();
-          const firstName = (meetingForm.elements.namedItem('firstName') as HTMLInputElement)?.value || '';
-          const lastName = (meetingForm.elements.namedItem('lastName') as HTMLInputElement)?.value || '';
-          const email = (meetingForm.elements.namedItem('email') as HTMLInputElement)?.value || '';
-          const subject = encodeURIComponent(`Meeting Request from ${firstName} ${lastName}`);
-          const body = encodeURIComponent(`Name: ${firstName} ${lastName}\nEmail: ${email}\n\nHi Erika,\nI would like to schedule a meeting with you!`);
-          window.location.href = `mailto:hello@example.com?subject=${subject}&body=${body}`;
+          const details = getMailDetails();
+          if (!details) return;
+          window.location.href = `mailto:${TARGET_EMAIL}?subject=${encodeURIComponent(details.subject)}&body=${encodeURIComponent(details.body)}`;
+        });
+      }
+
+      if (gmailBtn) {
+        gmailBtn.addEventListener('click', () => {
+          const details = getMailDetails();
+          if (!details) return;
+          const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(TARGET_EMAIL)}&su=${encodeURIComponent(details.subject)}&body=${encodeURIComponent(details.body)}`;
+          window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+        });
+      }
+
+      if (copyEmailBtn && copyEmailText) {
+        copyEmailBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(TARGET_EMAIL);
+            const originalText = copyEmailText.textContent;
+            copyEmailText.textContent = 'Copied to clipboard!';
+            setTimeout(() => {
+              copyEmailText.textContent = originalText;
+            }, 2000);
+          } catch {
+            // Fallback if clipboard permission fails
+          }
         });
       }
     </script>
