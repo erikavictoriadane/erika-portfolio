@@ -43,45 +43,45 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Layout
-  title="Erika Finnimore | Marketing Strategy · Campaigns · Creative Thinking"
+  title="Erika Finnimore | Marketing Strategy · Creative Direction"
   description="I'm a marketing strategist who combines creative thinking, audience insights, and data to develop campaigns, content, and experiences that connect with people and drive results."
 >
   <!-- Sticky Glassmorphic Header Navigation -->
-  <header class="sticky top-0 z-50 backdrop-blur-md bg-[#faf8f5]/85 border-b border-stone-200/80 transition-all">
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-white/85 border-b border-[#dddedc]/80 transition-all">
     <div class="max-w-6xl mx-auto px-6 h-18 flex items-center justify-between">
-      <a href="#hero" class="flex items-center gap-3 group">
-        <span class="w-9 h-9 rounded-full bg-stone-900 flex items-center justify-center text-stone-50 font-serif font-bold text-sm tracking-tight shadow-sm group-hover:bg-stone-800 transition-all">
-          EF
+      <a href="#hero" class="flex items-center gap-3 group shrink-0">
+        <span class="w-8 h-8 rounded-full bg-[#102f10] flex items-center justify-center text-white font-bold text-xs tracking-tight shadow-sm group-hover:bg-[#184418] transition-all shrink-0">
+          ef
         </span>
-        <div class="flex flex-col">
-          <span class="font-serif font-bold text-base tracking-tight text-stone-900 group-hover:text-stone-700 transition-colors">
-            Erika Finnimore
+        <div class="nav-brand-text flex flex-col">
+          <span class="font-bold text-base tracking-tight text-[#102f10] group-hover:text-[#184418] transition-colors lowercase whitespace-nowrap">
+            erika finnimore
           </span>
-          <span class="text-[10px] font-mono tracking-widest uppercase text-stone-600">
-            Marketing Strategy · Campaigns · Creative Thinking
+          <span class="hidden sm:block text-[10px] font-mono tracking-widest uppercase text-[#84827e] whitespace-nowrap">
+            Marketing Strategy · Creative Direction
           </span>
         </div>
       </a>
 
       <nav aria-label="Main Navigation">
-        <ul class="flex items-center gap-1 sm:gap-6 text-xs sm:text-sm font-medium text-stone-600">
+        <ul class="flex items-center gap-1 sm:gap-6 text-xs font-bold uppercase tracking-wider text-[#84827e]">
           <li>
-            <a href="#hero" class="px-3 py-1.5 rounded-full hover:text-stone-900 hover:bg-stone-100/80 transition-colors">
+            <a href="#hero" class="px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors">
               Overview
             </a>
           </li>
           <li>
-            <a href="#about" class="px-3 py-1.5 rounded-full hover:text-stone-900 hover:bg-stone-100/80 transition-colors">
+            <a href="#about" class="px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors">
               About
             </a>
           </li>
           <li>
-            <a href="#work" class="px-3 py-1.5 rounded-full hover:text-stone-900 hover:bg-stone-100/80 transition-colors">
+            <a href="#work" class="px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors">
               Work
             </a>
           </li>
           <li>
-            <a href="#contact" class="px-3.5 py-1.5 rounded-full bg-stone-900 text-stone-50 hover:bg-stone-800 transition-colors shadow-sm">
+            <a href="#contact" class="px-4 py-1.5 rounded-full border border-[#84827e] text-[#67645e] hover:bg-[#67645e] hover:text-white transition-all shadow-sm">
               Contact
             </a>
           </li>
@@ -92,17 +92,17 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
   <main class="flex-1">
     <!-- Section 1: Hero (#hero) -->
-    <section id="hero" class="relative pt-16 pb-20 md:pt-24 md:pb-24 max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center">
+    <section id="hero" class="relative pt-16 pb-16 md:pt-24 md:pb-20 max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <!-- Left Column: Headline, Bio & CTAs -->
         <div class="lg:col-span-7 space-y-6 sm:space-y-7">
 
-          <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-stone-900 tracking-tight leading-[1.12]">
-            Hi, I'm Erika.
-            <span class="block mt-1">I make <span class="italic font-normal">ideas</span> happen.</span>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#102f10] tracking-tight leading-[1.12]">
+            hi, i'm erika.
+            <span class="block mt-1 font-normal text-[#102f10]">i make <span class="italic">ideas</span> happen.</span>
           </h1>
 
-          <p class="text-base sm:text-lg text-stone-600 leading-relaxed font-normal max-w-xl">
+          <p class="text-base sm:text-lg text-[#525252] leading-relaxed font-normal max-w-xl">
             I'm a marketing strategist who combines creative thinking, audience insights, and data to develop campaigns, content, and experiences that connect with people and drive results.
           </p>
 
@@ -110,7 +110,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
           <div class="pt-2 flex flex-wrap items-center gap-4">
             <a
               href="#work"
-              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-xs tracking-wider uppercase bg-stone-900 text-stone-50 hover:bg-stone-800 shadow-md hover:shadow-lg transition-all cursor-pointer"
+              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-xs tracking-wider uppercase bg-[#102f10] text-white hover:bg-[#184418] shadow-sm transition-all cursor-pointer"
             >
               <span>View My Work</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -119,7 +119,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
             </a>
             <a
               href="#about"
-              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-xs tracking-wider uppercase bg-white text-stone-800 hover:bg-stone-100 border border-stone-300/80 shadow-sm transition-all cursor-pointer"
+              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-xs tracking-wider uppercase bg-white text-[#67645e] border border-[#84827e] hover:bg-[#efeef1] shadow-sm transition-all cursor-pointer"
             >
               <span>About Me</span>
             </a>
@@ -129,9 +129,9 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
         <!-- Right Column: Framed Editorial Hero Portrait -->
         <div class="lg:col-span-5">
           <div class="relative group mx-auto max-w-sm lg:max-w-none">
-            <!-- Decorative frame matching About Me styling -->
-            <div class="relative rounded-3xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] border border-stone-200 bg-white p-3 sm:p-4">
-              <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-stone-100 relative">
+            <!-- Flush Rhode rounded card framing -->
+            <div class="relative rounded-3xl overflow-hidden bg-[#efeef1] p-2.5 sm:p-3 border border-[#dddedc] shadow-sm">
+              <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-white relative">
                 <img
                   src={`${baseUrl}/images/portrait-hero-white-shirt.jpg`}
                   alt="Marketing Director portrait"
@@ -140,28 +140,21 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                 />
               </div>
             </div>
-
-            <!-- Corner aesthetic accent detail -->
-            <div class="hidden sm:block absolute -top-3 -left-3 w-20 h-20 border-t-2 border-l-2 border-stone-300/80 rounded-tl-3xl -z-10"></div>
           </div>
         </div>
       </div>
-
     </section>
 
     <!-- Section 2: About Me (#about) -->
-    <section id="about" class="py-24 bg-stone-100/70 border-y border-stone-200 relative overflow-hidden">
-      <!-- Subtle ambient background glow -->
-      <div class="absolute top-1/2 -left-20 w-96 h-96 bg-amber-100/40 rounded-full blur-3xl pointer-events-none -z-10"></div>
-
+    <section id="about" class="py-20 bg-white border-t border-[#dddedc]">
       <div class="max-w-6xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <!-- Left Column: Framed Editorial Portrait -->
+          <!-- Left Column: Editorial Portrait Card -->
           <div class="lg:col-span-5">
             <div class="relative group">
-              <!-- Decorative matte frame -->
-              <div class="relative rounded-3xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(0,0,0,0.12)] border border-stone-200 bg-white p-3 sm:p-4">
-                <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-stone-100 relative">
+              <!-- Flush Rhode rounded card framing -->
+              <div class="relative rounded-3xl overflow-hidden bg-[#efeef1] p-2.5 sm:p-3 border border-[#dddedc] shadow-sm">
+                <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-white relative">
                   <img
                     src={`${baseUrl}/images/portrait.jpg`}
                     alt="Marketing Director portrait"
@@ -170,19 +163,16 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                   />
                 </div>
               </div>
-
-              <!-- Corner aesthetic detail -->
-              <div class="hidden sm:block absolute -bottom-3 -right-3 w-24 h-24 border-b-2 border-r-2 border-stone-300/80 rounded-br-3xl -z-10"></div>
             </div>
           </div>
 
           <!-- Right Column: Narrative Biography & Philosophy -->
           <div class="lg:col-span-7 space-y-6">
-            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 tracking-tight leading-tight">
-              About Me
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#102f10] tracking-tight leading-tight">
+              about me
             </h2>
 
-            <div class="space-y-4 text-stone-600 text-sm sm:text-base leading-relaxed">
+            <div class="space-y-4 text-[#525252] text-sm sm:text-base leading-relaxed font-normal">
               <p>
                 I'm a marketing strategist who loves figuring out how to make things work better. That could mean finding a new way to reach an audience, prototyping designs for A/B tests, or turning a complicated idea into something people can connect with emotionally.
               </p>
@@ -207,7 +197,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
             <div class="pt-2 flex flex-wrap items-center gap-4">
               <a
                 href="#work"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold tracking-wider uppercase bg-stone-900 text-stone-50 hover:bg-stone-800 shadow-sm transition-all cursor-pointer"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase bg-[#102f10] text-white hover:bg-[#184418] shadow-sm transition-all cursor-pointer"
               >
                 <span>View My Work</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -216,7 +206,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
               </a>
               <a
                 href="#contact"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-semibold tracking-wider uppercase bg-white text-stone-800 hover:bg-stone-100 border border-stone-300 shadow-sm transition-all cursor-pointer"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase bg-white text-[#67645e] border border-[#84827e] hover:bg-[#efeef1] shadow-sm transition-all cursor-pointer"
               >
                 <span>Get In Touch</span>
               </a>
@@ -299,11 +289,11 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     <!-- Section 3: Work Gallery (#work) -->
     <section id="work" class="py-24 max-w-7xl mx-auto px-6">
       <div class="max-w-2xl mb-12 space-y-3">
-        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 tracking-tight">
-          Work Samples
+        <h2 class="text-3xl sm:text-4xl font-bold text-[#102f10] tracking-tight">
+          work samples
         </h2>
-        <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
-          A collection of marketing projects spanning brand strategy, integrated campaigns, content, and growth. Explore the strategy, execution, and results behind each project.
+        <p class="text-[#525252] text-sm sm:text-base leading-relaxed font-normal">
+          Explore the challenge, strategy, execution, and results behind each project.
         </p>
       </div>
 
@@ -312,19 +302,19 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
     </section>
 
     <!-- Section 4: Recent Adventures & Connect (#contact) -->
-    <section id="contact" class="py-20 sm:py-24 bg-white border-t border-stone-200">
+    <section id="contact" class="py-20 sm:py-24 bg-white border-t border-[#dddedc]">
       <div class="max-w-6xl mx-auto px-6 space-y-16 sm:space-y-20">
         <!-- Part A: Recent Adventures Gallery -->
         <div class="space-y-6">
           <div class="text-center space-y-1.5">
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900 tracking-tight">
-              Recent Adventures
+            <h2 class="text-3xl sm:text-4xl font-bold text-[#102f10] tracking-tight">
+              recent adventures
             </h2>
           </div>
 
           <!-- 5-Image Curated Adventures Grid -->
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4">
-            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/90 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-[#efeef1] border border-[#dddedc] shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
               <img
                 src={`${baseUrl}/images/adventures/adventure-1.jpg`}
                 alt="Botanical garden illuminated neon path"
@@ -332,7 +322,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                 loading="lazy"
               />
             </div>
-            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/90 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-[#efeef1] border border-[#dddedc] shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
               <img
                 src={`${baseUrl}/images/adventures/adventure-2.jpg`}
                 alt="Henna lace design in cafe"
@@ -340,7 +330,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                 loading="lazy"
               />
             </div>
-            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/90 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-[#efeef1] border border-[#dddedc] shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
               <img
                 src={`${baseUrl}/images/adventures/adventure-3.jpg`}
                 alt="Playful puppy"
@@ -348,7 +338,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                 loading="lazy"
               />
             </div>
-            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/90 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-[#efeef1] border border-[#dddedc] shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1">
               <img
                 src={`${baseUrl}/images/adventures/adventure-4.jpg`}
                 alt="Cozy bookstore coffee"
@@ -356,7 +346,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                 loading="lazy"
               />
             </div>
-            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-stone-100 border border-stone-200/90 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 col-span-2 sm:col-span-1">
+            <div class="group relative aspect-square rounded-2xl overflow-hidden bg-[#efeef1] border border-[#dddedc] shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 col-span-2 sm:col-span-1">
               <img
                 src={`${baseUrl}/images/adventures/adventure-5.jpg`}
                 alt="Artisan wood-fired mushroom pizza"
@@ -368,11 +358,11 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
         </div>
 
         <!-- Part B: Meeting Request, Follow & Spotify Grid -->
-        <div class="pt-10 border-t border-stone-200/80 grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 items-start">
+        <div class="pt-10 border-t border-[#dddedc] grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 items-start">
           <!-- Column 1: Request a Meeting With Me -->
           <div class="md:col-span-5 space-y-5">
-            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 tracking-tight">
-              Request a meeting with me!
+            <h3 class="text-2xl sm:text-3xl font-bold text-[#102f10] tracking-tight">
+              request a meeting
             </h3>
 
             <form id="meeting-form" class="space-y-3">
@@ -383,7 +373,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                   id="meeting-first-name"
                   required
                   placeholder="First Name"
-                  class="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200/90 text-stone-900 placeholder:text-stone-400 text-sm focus:outline-none focus:ring-2 focus:ring-stone-400 focus:bg-white transition-all shadow-sm"
+                  class="w-full px-4 py-3 rounded-xl bg-[#efeef1] border border-[#dddedc] text-[#525252] placeholder:text-[#84827e] text-sm focus:outline-none focus:ring-2 focus:ring-[#102f10] focus:bg-white transition-all shadow-sm"
                 />
               </div>
               <div>
@@ -393,7 +383,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                   id="meeting-last-name"
                   required
                   placeholder="Last Name"
-                  class="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200/90 text-stone-900 placeholder:text-stone-400 text-sm focus:outline-none focus:ring-2 focus:ring-stone-400 focus:bg-white transition-all shadow-sm"
+                  class="w-full px-4 py-3 rounded-xl bg-[#efeef1] border border-[#dddedc] text-[#525252] placeholder:text-[#84827e] text-sm focus:outline-none focus:ring-2 focus:ring-[#102f10] focus:bg-white transition-all shadow-sm"
                 />
               </div>
               <div>
@@ -403,15 +393,15 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                   id="meeting-email"
                   required
                   placeholder="Email Address"
-                  class="w-full px-4 py-3 rounded-xl bg-stone-50 border border-stone-200/90 text-stone-900 placeholder:text-stone-400 text-sm focus:outline-none focus:ring-2 focus:ring-stone-400 focus:bg-white transition-all shadow-sm"
+                  class="w-full px-4 py-3 rounded-xl bg-[#efeef1] border border-[#dddedc] text-[#525252] placeholder:text-[#84827e] text-sm focus:outline-none focus:ring-2 focus:ring-[#102f10] focus:bg-white transition-all shadow-sm"
                 />
               </div>
               <div class="pt-1">
                 <button
                   type="submit"
-                  class="w-full sm:w-auto px-8 py-3.5 rounded-full font-semibold text-xs tracking-wider uppercase bg-stone-900 text-stone-50 hover:bg-stone-800 shadow-md hover:shadow-lg transition-all cursor-pointer"
+                  class="w-full sm:w-auto px-8 py-3.5 rounded-full font-bold text-xs tracking-wider uppercase bg-[#102f10] text-white hover:bg-[#184418] shadow-sm transition-all cursor-pointer"
                 >
-                  LET'S GET STARTED!
+                  LET'S GET STARTED
                 </button>
               </div>
             </form>
@@ -420,15 +410,15 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
           <!-- Column 2: Follow Me & Quick Links -->
           <div class="md:col-span-3 space-y-6 md:pt-1">
             <div class="space-y-3">
-              <h4 class="font-serif text-lg font-bold text-stone-900">
-                Follow Me
+              <h4 class="text-lg font-bold text-[#102f10] tracking-tight">
+                connect
               </h4>
               <div class="flex items-center gap-3">
                 <a
                   href="https://linkedin.com/in/example"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-800 hover:scale-105 transition-all shadow-sm"
+                  class="w-10 h-10 rounded-full bg-[#102f10] text-white flex items-center justify-center hover:bg-[#184418] hover:scale-105 transition-all shadow-sm"
                   aria-label="LinkedIn profile"
                 >
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -439,7 +429,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                   href="https://instagram.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-800 hover:scale-105 transition-all shadow-sm"
+                  class="w-10 h-10 rounded-full bg-[#102f10] text-white flex items-center justify-center hover:bg-[#184418] hover:scale-105 transition-all shadow-sm"
                   aria-label="Instagram profile"
                 >
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -450,7 +440,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
                   href="https://open.spotify.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="w-10 h-10 rounded-full bg-stone-900 text-white flex items-center justify-center hover:bg-stone-800 hover:scale-105 transition-all shadow-sm"
+                  class="w-10 h-10 rounded-full bg-[#102f10] text-white flex items-center justify-center hover:bg-[#184418] hover:scale-105 transition-all shadow-sm"
                   aria-label="Spotify profile"
                 >
                   <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -464,7 +454,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
               <div>
                 <a
                   href="#about"
-                  class="text-sm font-semibold text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition-colors"
+                  class="text-sm font-bold text-[#67645e] underline underline-offset-4 decoration-[#dddedc] hover:decoration-[#67645e] transition-colors"
                 >
                   About Me
                 </a>
@@ -472,7 +462,7 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
               <div>
                 <a
                   href="#work"
-                  class="text-sm font-semibold text-stone-900 underline underline-offset-4 decoration-stone-300 hover:decoration-stone-900 transition-colors"
+                  class="text-sm font-bold text-[#67645e] underline underline-offset-4 decoration-[#dddedc] hover:decoration-[#67645e] transition-colors"
                 >
                   All Work Samples
                 </a>
@@ -482,11 +472,11 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
 
           <!-- Column 3: Listen with me (Spotify Player) -->
           <div class="md:col-span-4 space-y-3 md:pt-1">
-            <h4 class="font-serif text-lg font-bold text-stone-900 flex items-center gap-2">
-              <span>Listen with me</span>
+            <h4 class="text-lg font-bold text-[#102f10] flex items-center gap-2">
+              <span>listen with me</span>
               <span class="text-base font-normal">🎶</span>
             </h4>
-            <div class="rounded-2xl overflow-hidden shadow-sm border border-stone-200/90 bg-stone-900">
+            <div class="rounded-2xl overflow-hidden shadow-sm border border-[#dddedc] bg-[#efeef1]">
               <iframe
                 data-testid="embed-iframe"
                 style="border-radius:12px"
@@ -519,13 +509,13 @@ const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, '');
   </main>
 
   <!-- Minimal Editorial Footer -->
-  <footer class="py-10 border-t border-stone-200 bg-[#faf8f5] text-center text-xs font-mono text-stone-600">
+  <footer class="py-10 border-t border-[#dddedc] bg-white text-center text-xs font-mono text-[#84827e]">
     <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        © {new Date().getFullYear()} Marketing Director & Brand Strategist • Portfolio Template
+        © {new Date().getFullYear()} Erika Finnimore • Marketing Portfolio
       </div>
       <div class="flex items-center gap-6">
-        <a href="#hero" class="hover:text-stone-900 transition-colors">Return to top ↑</a>
+        <a href="#hero" class="hover:text-[#67645e] transition-colors">Return to top ↑</a>
       </div>
     </div>
   </footer>

@@ -107,8 +107,34 @@
     body: '',
   });
 
+  // Rhode Frosted Follower Cursor State (Zero-lag GPU transform)
+  let cursorRef = $state<HTMLDivElement | null>(null);
+  let isCursorVisible = $state(false);
+  let cursorLabel = $state('explore');
+
+  function handleMouseMove(e: MouseEvent) {
+    if (cursorRef) {
+      cursorRef.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+    }
+  }
+
+  function handleCardMouseEnter(isVid: boolean) {
+    cursorLabel = isVid ? 'play' : 'explore';
+    isCursorVisible = true;
+  }
+
+  function handleCardMouseLeave() {
+    isCursorVisible = false;
+  }
+
+  function handleWindowMouseLeave() {
+    isCursorVisible = false;
+  }
+
   // Check dev backend health check on mount
   onMount(() => {
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('mouseleave', handleWindowMouseLeave);
     if (isDev) {
       fetch('/api/artifact/health')
         .then((res) => {
@@ -118,6 +144,11 @@
           devServerReady = false;
         });
     }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseleave', handleWindowMouseLeave);
+    };
   });
 
   // Sync prop changes (e.g. Astro hot reload)
@@ -257,31 +288,31 @@
     if (!markdown) return '';
     return markdown
       // Horizontal rules
-      .replace(/^---$/gim, '<hr class="my-3 border-stone-200/60" />')
+      .replace(/^---$/gim, '<hr class="my-4 border-[#dddedc]" />')
       // Markdown Images: ![alt](url)
       .replace(/!\[(.*?)\]\((.*?)\)/g, (_match, alt, src) => {
         const resolvedSrc = resolveUrl(src);
         const captionHtml = alt
-          ? `<figcaption class="w-full py-2 px-4 text-center text-xs font-mono text-stone-600 bg-white/95 border-t border-stone-200/80 flex items-center justify-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-stone-400 inline-block"></span>${alt}</figcaption>`
+          ? `<figcaption class="w-full py-2 px-4 text-center text-[11px] font-mono text-[#84827e] bg-white border-t border-[#dddedc] flex items-center justify-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#84827e] inline-block"></span>${alt}</figcaption>`
           : '';
-        return `<figure class="my-4 rounded-xl overflow-hidden border border-stone-200/90 bg-stone-50 shadow-sm transition-all hover:shadow-md flex flex-col items-center">
+        return `<figure class="my-4 rounded-xl overflow-hidden border border-[#dddedc] bg-white shadow-sm flex flex-col items-center">
           <img src="${resolvedSrc}" alt="${alt || 'Artifact collateral visual'}" class="max-w-full h-auto max-h-[580px] object-contain mx-auto block" loading="lazy" />
           ${captionHtml}
         </figure>`;
       })
       // Markdown Links: [text](url)
-      .replace(/(?<!\!)\[(.*?)\]\((.*?)\)/g, (_match, text, href) => `<a href="${resolveUrl(href)}" target="_blank" rel="noopener noreferrer" class="text-stone-900 underline underline-offset-2 font-semibold hover:text-stone-600 transition-colors">${text}</a>`)
+      .replace(/(?<!\!)\[(.*?)\]\((.*?)\)/g, (_match, text, href) => `<a href="${resolveUrl(href)}" target="_blank" rel="noopener noreferrer" class="text-[#67645e] underline underline-offset-2 font-bold hover:text-[#525252] transition-colors">${text}</a>`)
       // Blockquotes
-      .replace(/^> (.*$)/gim, '<blockquote class="my-3 pl-4 border-l-2 border-stone-800 text-stone-800 italic font-serif text-base bg-stone-50/80 py-2 px-4 rounded-r-lg">$1</blockquote>')
-      // Headings (no dots, larger font size, reduced top padding for easy skimming)
-      .replace(/^#### (.*$)/gim, '<h5 class="font-serif text-base sm:text-lg font-bold text-stone-900 mt-4 mb-1.5 tracking-tight">$1</h5>')
-      .replace(/^### (.*$)/gim, '<h4 class="font-serif text-xl sm:text-2xl font-bold text-stone-900 mt-5 first:mt-1 mb-2 tracking-tight">$1</h4>')
-      .replace(/^## (.*$)/gim, '<h3 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 mt-6 first:mt-1 mb-2 border-b border-stone-200 pb-1 tracking-tight">$1</h3>')
+      .replace(/^> (.*$)/gim, '<blockquote class="my-3 pl-4 border-l-2 border-[#67645e] text-[#525252] italic text-sm bg-white/70 py-2.5 px-4 rounded-r-lg">$1</blockquote>')
+      // Headings (Rhode architectural sans)
+      .replace(/^#### (.*$)/gim, '<h5 class="text-xs font-bold uppercase tracking-wider text-[#84827e] mt-4 mb-1.5">$1</h5>')
+      .replace(/^### (.*$)/gim, '<h4 class="text-base sm:text-lg font-bold text-[#67645e] mt-5 first:mt-1 mb-2 tracking-tight">$1</h4>')
+      .replace(/^## (.*$)/gim, '<h3 class="text-lg sm:text-xl font-bold text-[#67645e] mt-6 first:mt-1 mb-2 border-b border-[#dddedc] pb-1.5 tracking-tight">$1</h3>')
       // Typography
-      .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-stone-900">$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em class="italic text-stone-800">$1</em>')
-      .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-stone-100 text-stone-800 font-mono text-xs border border-stone-200">$1</code>')
-      .replace(/^- (.*$)/gim, '<li class="ml-4 list-disc text-stone-700 mb-1.5 leading-relaxed marker:text-stone-400">$1</li>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-[#67645e]">$1</strong>')
+      .replace(/\*(.*?)\*/g, '<em class="italic text-[#525252]">$1</em>')
+      .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-white text-[#67645e] font-mono text-xs border border-[#dddedc]">$1</code>')
+      .replace(/^- (.*$)/gim, '<li class="ml-4 list-disc text-[#525252] mb-1.5 leading-relaxed marker:text-[#84827e] font-normal">$1</li>')
       .replace(/\n\n/g, '<div class="h-2"></div>');
   }
 
@@ -603,12 +634,40 @@
   <!-- Toast Notification Alert -->
   {#if toastMessage}
     <div
-      class="fixed bottom-6 right-6 z-50 px-4 py-2.5 rounded-xl bg-stone-900 text-stone-50 text-xs font-mono shadow-2xl flex items-center gap-2 border border-stone-700 animate-bounce"
+      class="fixed bottom-6 right-6 z-50 px-4 py-2.5 rounded-xl bg-[#67645e] text-white text-xs font-mono shadow-2xl flex items-center gap-2 border border-[#84827e] animate-bounce"
     >
       <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
       {toastMessage}
     </div>
   {/if}
+
+  <!-- Floating Frosted Glass Follower Cursor (Zero-Lag Direct GPU Transform) -->
+  <div
+    bind:this={cursorRef}
+    class="rhode-custom-cursor pointer-events-none fixed top-0 left-0 z-50 select-none will-change-transform"
+    style="transform: translate3d(-200px, -200px, 0); transition: none !important;"
+  >
+    <div
+      class="flex items-center justify-center rounded-full select-none"
+      style="
+        width: 58px;
+        height: 58px;
+        transform: translate(-50%, -50%) scale({isCursorVisible ? 1 : 0.4});
+        transition: opacity 0.18s ease-out, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+        background: rgba(255, 255, 255, 0.38);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(103, 100, 94, 0.16);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        opacity: {isCursorVisible ? 1 : 0};
+        visibility: {isCursorVisible ? 'visible' : 'hidden'};
+      "
+    >
+      <span class="text-[9px] font-bold tracking-[0.18em] uppercase text-[#67645e] text-center select-none pointer-events-none">
+        {cursorLabel}
+      </span>
+    </div>
+  </div>
 
   <!-- Curatorial Filter & Search Bar -->
   <div class="mb-10 space-y-6">
@@ -616,7 +675,7 @@
       <!-- Search Input & Dev Action Controls -->
       <div class="flex flex-wrap items-center gap-3 flex-1 max-w-2xl">
         <div class="relative flex-1 min-w-[240px]">
-          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-stone-400">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#84827e]">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -625,14 +684,14 @@
             type="text"
             bind:value={searchQuery}
             placeholder="Search by campaign, channel, or impact..."
-            class="w-full pl-10 pr-10 py-2.5 bg-white border border-stone-300/80 rounded-xl text-sm text-stone-900 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-stone-400/50 focus:border-stone-500 transition-all shadow-sm"
+            class="w-full pl-10 pr-10 py-2.5 bg-[#efeef1] border border-[#dddedc] rounded-xl text-sm text-[#525252] placeholder-[#84827e] focus:outline-none focus:ring-2 focus:ring-[#84827e] focus:bg-white transition-all shadow-sm"
             aria-label="Filter portfolio artifacts"
           />
           {#if searchQuery}
             <button
               type="button"
               onclick={() => (searchQuery = '')}
-              class="absolute inset-y-0 right-0 pr-3 flex items-center text-stone-400 hover:text-stone-600 transition-colors cursor-pointer"
+              class="absolute inset-y-0 right-0 pr-3 flex items-center text-[#84827e] hover:text-[#67645e] transition-colors cursor-pointer"
               aria-label="Clear search query"
             >
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -648,9 +707,9 @@
             <button
               type="button"
               onclick={() => (editMode = !editMode)}
-              class="px-3.5 py-2.5 rounded-xl text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-all cursor-pointer shadow-sm {editMode
-                ? 'bg-amber-600 text-stone-50 ring-2 ring-amber-500/80'
-                : 'bg-white text-stone-700 border border-stone-300 hover:bg-stone-100 hover:text-stone-900'}"
+              class="px-3.5 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase flex items-center gap-1.5 transition-all cursor-pointer shadow-sm {editMode
+                ? 'bg-amber-600 text-white ring-2 ring-amber-500/80'
+                : 'bg-white text-[#67645e] border border-[#dddedc] hover:bg-[#efeef1]'}"
               aria-label="Toggle Artifact Edit Mode"
             >
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -663,7 +722,7 @@
               <button
                 type="button"
                 onclick={() => openEditorModal(null)}
-                class="px-3.5 py-2.5 rounded-xl text-xs font-semibold tracking-wide bg-stone-900 text-stone-50 hover:bg-stone-800 transition-all cursor-pointer flex items-center gap-1.5 shadow-sm"
+                class="px-3.5 py-2.5 rounded-xl text-xs font-bold tracking-wider uppercase bg-[#67645e] text-white hover:bg-[#525252] transition-all cursor-pointer flex items-center gap-1.5 shadow-sm"
                 aria-label="Create New Artifact"
               >
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -677,22 +736,22 @@
       </div>
 
       <!-- Exhibition Counter -->
-      <div class="text-xs font-mono text-stone-500 flex items-center gap-2 shrink-0">
-        <span class="w-2 h-2 rounded-full bg-stone-700"></span>
-        Displaying <span class="text-stone-900 font-semibold">{filteredArtifacts.length}</span> {filteredArtifacts.length === 1 ? 'case study' : 'case studies'}
+      <div class="text-xs font-mono text-[#84827e] flex items-center gap-2 shrink-0">
+        <span class="w-2 h-2 rounded-full bg-[#102f10]"></span>
+        Displaying <span class="text-[#102f10] font-bold">{filteredArtifacts.length}</span> {filteredArtifacts.length === 1 ? 'case study' : 'case studies'}
       </div>
     </div>
 
-    <!-- Gallery Wings Filter Strip -->
-    <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-stone-200">
-      <span class="text-xs font-mono font-semibold uppercase tracking-wider text-stone-400 mr-2 shrink-0">Discipline:</span>
+    <!-- Gallery Wings Filter Strip (Rhode Outline-to-Fill Style) -->
+    <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-[#dddedc]">
+      <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#84827e] mr-2 shrink-0">Filter By:</span>
       {#each visibleTags as tag}
         <button
           type="button"
           onclick={() => (selectedTag = tag)}
-          class="px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer {selectedTag === tag
-            ? 'bg-stone-900 text-stone-50 shadow-sm ring-1 ring-stone-900 font-semibold'
-            : 'bg-white text-stone-600 hover:bg-stone-100 hover:text-stone-900 border border-stone-200'}"
+          class="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer {selectedTag === tag
+            ? 'bg-[#102f10] text-white border border-[#102f10] shadow-sm'
+            : 'bg-transparent text-[#67645e]/75 border border-[#dddedc] hover:border-[#102f10] hover:text-[#102f10]'}"
         >
           {tag}
           {#if tag !== 'All'}
@@ -707,7 +766,7 @@
         <button
           type="button"
           onclick={() => (isTagsExpanded = !isTagsExpanded)}
-          class="px-3 py-1.5 rounded-full text-xs font-mono font-medium text-stone-600 hover:text-stone-900 bg-stone-100 hover:bg-stone-200 transition-colors cursor-pointer inline-flex items-center gap-1.5 border border-stone-200/90"
+          class="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold text-[#84827e] hover:text-[#67645e] bg-[#efeef1] hover:bg-[#dddedc] transition-colors cursor-pointer inline-flex items-center gap-1.5 border border-[#dddedc]"
           aria-expanded={isTagsExpanded}
         >
           {#if isTagsExpanded}
@@ -728,15 +787,15 @@
 
   <!-- Gallery Wall Grid -->
   {#if filteredArtifacts.length === 0}
-    <div class="py-20 text-center rounded-2xl border border-dashed border-stone-300 bg-stone-100/60 p-8">
-      <p class="font-serif text-lg text-stone-600 mb-4">No campaign artifacts match the selected criteria.</p>
+    <div class="py-20 text-center rounded-2xl border border-dashed border-[#dddedc] bg-[#efeef1]/60 p-8">
+      <p class="text-lg text-[#84827e] mb-4">No campaign artifacts match the selected criteria.</p>
       <button
         type="button"
         onclick={() => {
           selectedTag = 'All';
           searchQuery = '';
         }}
-        class="px-4 py-2 text-xs font-medium rounded-full bg-stone-900 text-stone-50 hover:bg-stone-800 transition cursor-pointer"
+        class="px-5 py-2 text-xs font-bold uppercase tracking-wider rounded-full bg-[#102f10] text-white hover:bg-[#184418] transition cursor-pointer"
       >
         Reset gallery filters
       </button>
@@ -745,12 +804,14 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {#each filteredArtifacts as artifact (artifact.id)}
         <article
-          class="group relative flex flex-col bg-white border border-stone-200/90 rounded-2xl overflow-hidden shadow-[0_4px_20px_-4px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_36px_-6px_rgba(0,0,0,0.12)] hover:-translate-y-1 transition-all duration-300"
+          class="group relative flex flex-col bg-[#efeef1] border border-[#dddedc] rounded-2xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 rhode-card-interactive"
+          onmouseenter={() => handleCardMouseEnter(artifact.mediaType === 'video')}
+          onmouseleave={handleCardMouseLeave}
         >
           <!-- Artifact Preview Frame (Accessible Button) -->
           <button
             type="button"
-            class="relative w-full aspect-[16/10] overflow-hidden bg-stone-100 border-b border-stone-100 cursor-pointer block text-left p-0 border-0"
+            class="relative w-full aspect-[16/10] overflow-hidden bg-white border-b border-[#dddedc] block text-left p-0 border-0"
             onclick={() => openModal(artifact)}
             aria-label={"View case study: " + artifact.title}
           >
@@ -762,7 +823,7 @@
                 loading="lazy"
               />
             {:else}
-              <div class="w-full h-full flex items-center justify-center bg-stone-200 text-stone-400 font-serif italic">
+              <div class="w-full h-full flex items-center justify-center bg-[#efeef1] text-[#84827e] italic text-xs">
                 Visual preview unavailable
               </div>
             {/if}
@@ -770,7 +831,7 @@
             <!-- Video Play Button Overlay on Card -->
             {#if artifact.mediaType === 'video'}
               <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors">
-                <div class="w-11 h-11 rounded-full bg-stone-900/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm border border-white/20">
+                <div class="w-11 h-11 rounded-full bg-[#67645e]/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm border border-white/20">
                   <svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
                   </svg>
@@ -782,7 +843,7 @@
             <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none gap-2">
               <div class="flex items-center gap-1.5 flex-wrap">
                 {#if artifact.hidden}
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-stone-700/90 text-stone-200 backdrop-blur-md shadow-sm shrink-0 flex items-center gap-1">
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[#525252]/90 text-white backdrop-blur-md shadow-sm shrink-0 flex items-center gap-1">
                     <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />
                     </svg>
@@ -790,26 +851,26 @@
                   </span>
                 {/if}
                 {#if artifact.featured}
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-stone-900/90 text-stone-50 backdrop-blur-md shadow-sm shrink-0">
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[#102f10] text-white backdrop-blur-md shadow-sm shrink-0">
                     Featured
                   </span>
                 {/if}
                 {#if artifact.mediaType === 'video'}
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-amber-600/90 text-stone-50 backdrop-blur-md shadow-sm shrink-0 flex items-center gap-1">
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[#643a2a] text-white backdrop-blur-md shadow-sm shrink-0 flex items-center gap-1">
                     <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                     Video
                   </span>
                 {:else if artifact.mediaType === 'document'}
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-stone-800/80 text-stone-50 backdrop-blur-md shadow-sm shrink-0">
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[#525252] text-white backdrop-blur-md shadow-sm shrink-0">
                     Doc
                   </span>
                 {/if}
               </div>
 
               {#if artifact.metrics}
-                <span class="px-2 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono font-semibold bg-white/95 text-stone-900 shadow-md backdrop-blur-md border border-stone-200/60 truncate">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono font-bold bg-white/95 text-[#67645e] shadow-sm backdrop-blur-md border border-[#dddedc] truncate">
                   {artifact.metrics}
                 </span>
               {/if}
@@ -822,7 +883,7 @@
               <!-- Tag Badges Strip -->
               <div class="flex flex-wrap gap-1.5 mb-2.5">
                 {#each artifact.tags as tag}
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-medium bg-stone-100 text-stone-700 border border-stone-200/70">
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider {selectedTag === tag ? 'bg-[#102f10] text-white border border-[#102f10]' : 'bg-white text-[#84827e] border border-[#dddedc]'}">
                     {tag}
                   </span>
                 {/each}
@@ -832,7 +893,7 @@
               <h3 class="leading-snug mb-2 line-clamp-2">
                 <button
                   type="button"
-                  class="text-left font-serif text-lg sm:text-xl font-bold text-stone-900 group-hover:text-stone-700 transition-colors cursor-pointer p-0 border-0 bg-transparent"
+                  class="text-left text-lg sm:text-xl font-bold text-[#67645e] group-hover:text-[#525252] transition-colors p-0 border-0 bg-transparent"
                   onclick={() => openModal(artifact)}
                 >
                   {artifact.title}
@@ -840,23 +901,25 @@
               </h3>
 
               <!-- Narrative Summary -->
-              <p class="text-xs sm:text-sm text-stone-600 leading-relaxed line-clamp-3">
+              <p class="text-xs sm:text-sm text-[#525252] leading-relaxed line-clamp-3 font-normal">
                 {artifact.description}
               </p>
             </div>
 
             <!-- Placard Action Footer -->
-            <div class="pt-3 border-t border-stone-100 flex items-center justify-between gap-2">
+            <div class="pt-3 border-t border-[#dddedc]/80 flex items-center justify-between gap-2">
               <div class="flex items-center gap-2">
                 {#if isDev && editMode}
                   <!-- Dev Edit Pencil Icon -->
                   <button
                     type="button"
+                    onmouseenter={handleCardMouseLeave}
+                    onmouseleave={() => handleCardMouseEnter(artifact.mediaType === 'video')}
                     onclick={(e) => {
                       e.stopPropagation();
                       openEditorModal(artifact);
                     }}
-                    class="p-1.5 rounded-lg bg-stone-100 text-stone-700 hover:bg-stone-900 hover:text-stone-50 transition cursor-pointer"
+                    class="dev-action-btn p-1.5 rounded-lg bg-white text-[#67645e] border border-[#dddedc] hover:bg-[#67645e] hover:text-white transition cursor-pointer"
                     title="Edit artifact"
                     aria-label={"Edit artifact: " + artifact.title}
                   >
@@ -868,11 +931,13 @@
                   <!-- Dev Trash Delete Icon -->
                   <button
                     type="button"
+                    onmouseenter={handleCardMouseLeave}
+                    onmouseleave={() => handleCardMouseEnter(artifact.mediaType === 'video')}
                     onclick={(e) => {
                       e.stopPropagation();
                       promptDeleteArtifact(artifact);
                     }}
-                    class="p-1.5 rounded-lg bg-stone-100 text-stone-700 hover:bg-rose-600 hover:text-white transition cursor-pointer"
+                    class="dev-action-btn p-1.5 rounded-lg bg-white text-[#67645e] border border-[#dddedc] hover:bg-rose-600 hover:text-white transition cursor-pointer"
                     title="Delete artifact"
                     aria-label={"Delete artifact: " + artifact.title}
                   >
@@ -884,11 +949,13 @@
                   <!-- Quick Visibility Toggle Icon -->
                   <button
                     type="button"
+                    onmouseenter={handleCardMouseLeave}
+                    onmouseleave={() => handleCardMouseEnter(artifact.mediaType === 'video')}
                     onclick={(e) => {
                       e.stopPropagation();
                       quickToggleHidden(artifact);
                     }}
-                    class="p-1.5 rounded-lg bg-stone-100 text-stone-700 hover:bg-amber-600 hover:text-white transition cursor-pointer"
+                    class="dev-action-btn p-1.5 rounded-lg bg-white text-[#67645e] border border-[#dddedc] hover:bg-amber-600 hover:text-white transition cursor-pointer"
                     title={artifact.hidden ? 'Unhide artifact' : 'Hide artifact'}
                     aria-label={artifact.hidden ? 'Unhide artifact' : 'Hide artifact'}
                   >
@@ -904,7 +971,7 @@
                     {/if}
                   </button>
                 {:else if artifact.showDate && artifact.date}
-                  <span class="text-[11px] font-mono text-stone-400 shrink-0">
+                  <span class="text-[11px] font-mono text-[#84827e] shrink-0">
                     {new Date(artifact.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short' })}
                   </span>
                 {/if}
@@ -913,10 +980,10 @@
               <button
                 type="button"
                 onclick={() => openModal(artifact)}
-                class="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-stone-900 text-stone-50 hover:bg-stone-800 focus:ring-2 focus:ring-stone-400 focus:outline-none transition-all cursor-pointer shadow-sm group-hover:shadow shrink-0 ml-auto"
+                class="inline-flex items-center gap-1 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#102f10] text-white hover:bg-[#184418] focus:ring-2 focus:ring-[#102f10] focus:outline-none transition-all cursor-pointer shadow-sm group-hover:shadow shrink-0 ml-auto"
                 aria-haspopup="dialog"
               >
-                <span>{artifact.mediaType === 'video' ? 'Watch' : 'View'}</span>
+                <span>{artifact.mediaType === 'video' ? 'Watch' : 'Explore'}</span>
                 <svg class="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
@@ -928,50 +995,50 @@
     </div>
   {/if}
 
-  <!-- Lightbox Modal (<dialog>) -->
+  <!-- Lightbox Modal (<dialog>) with Full-Width Editorial Layout (Rhode Aesthetic) -->
   <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
   <dialog
     bind:this={dialogRef}
     onclick={handleBackdropClick}
     onclose={handleDialogClose}
-    class="backdrop:bg-stone-950/60 backdrop:backdrop-blur-sm bg-transparent p-4 max-w-3xl w-full max-h-[92vh] focus:outline-none m-auto"
+    class="backdrop:bg-black/60 backdrop:backdrop-blur-md bg-transparent p-3 sm:p-6 max-w-4xl lg:max-w-5xl w-full max-h-[96vh] focus:outline-none m-auto"
   >
     {#if activeArtifact}
       <div
-        class="bg-[#faf8f5] border border-stone-300/80 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[88vh] text-stone-800"
+        class="bg-white border border-[#dddedc] rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] text-[#525252]"
       >
-        <!-- Lightbox Sticky Header -->
-        <div class="p-5 px-6 border-b border-stone-200 bg-white/95 backdrop-blur-md sticky top-0 z-20 flex items-start justify-between gap-4">
-          <div class="space-y-1.5">
-            <div class="flex flex-wrap gap-1.5 items-center">
-              {#each activeArtifact.tags as tag}
-                <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-medium bg-stone-100 text-stone-800 border border-stone-200">
-                  {tag}
-                </span>
-              {/each}
-              {#if activeArtifact.mediaType === 'video'}
-                <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-semibold bg-amber-600 text-stone-50 flex items-center gap-1">
-                  <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  Video Showcase
-                </span>
-              {/if}
-              {#if activeArtifact.metrics}
-                <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-stone-900 text-stone-50">
-                  {activeArtifact.metrics}
-                </span>
-              {/if}
-            </div>
-            <h2 class="font-serif text-2xl sm:text-3xl font-bold text-stone-900 leading-snug">
-              {activeArtifact.title}
-            </h2>
+        <!-- Modal Top Bar -->
+        <div class="p-5 px-6 sm:px-8 border-b border-[#dddedc] bg-white sticky top-0 z-30 flex items-center justify-between gap-4">
+          <div class="flex items-center gap-2.5 flex-wrap flex-1 min-w-0">
+            {#if activeArtifact.featured}
+              <span class="px-2.5 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-[#102f10] text-white shadow-sm shrink-0">
+                Featured
+              </span>
+            {/if}
+            {#each activeArtifact.tags as tag}
+              <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#efeef1] text-[#67645e] border border-[#dddedc]">
+                {tag}
+              </span>
+            {/each}
+            {#if activeArtifact.mediaType === 'video'}
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[#643a2a] text-white flex items-center gap-1.5 shadow-sm">
+                <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+                Video Showcase
+              </span>
+            {/if}
+            {#if activeArtifact.metrics}
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#67645e] text-white shadow-sm">
+                {activeArtifact.metrics}
+              </span>
+            {/if}
           </div>
 
           <button
             type="button"
             onclick={closeModal}
-            class="p-2 rounded-full text-stone-400 hover:text-stone-900 hover:bg-stone-100 transition cursor-pointer"
+            class="p-2 rounded-full text-[#84827e] hover:text-[#67645e] hover:bg-[#efeef1] transition cursor-pointer shrink-0"
             aria-label="Close case study dialog"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -980,12 +1047,44 @@
           </button>
         </div>
 
-        <!-- Lightbox Scrollable Content -->
-        <div bind:this={modalScrollContainer} class="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm">
-          <!-- Media Preview (Interactive Video Player or Large Visual Artwork) -->
+        <!-- Full-Width Scrollable Body (The Case Study Narrative is the Centerpiece) -->
+        <div bind:this={modalScrollContainer} class="p-6 sm:p-10 md:p-12 overflow-y-auto space-y-8 max-h-[calc(92vh-130px)] scrollbar-rhode">
+          <!-- Case Study Title & Overview -->
+          <div class="space-y-4">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-[#84827e] block">
+              Case Study Narrative
+            </span>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#67645e] tracking-tight leading-tight">
+              {activeArtifact.title}
+            </h1>
+            {#if activeArtifact.description}
+              <p class="text-base sm:text-lg text-[#525252] leading-relaxed font-normal max-w-3xl">
+                {activeArtifact.description}
+              </p>
+            {/if}
+          </div>
+
+          <!-- Commercial Impact Metric Banner (Rhode High-Impact Results Styling) -->
+          {#if activeArtifact.metrics}
+            <div class="rounded-2xl bg-[#efeef1] border border-[#dddedc] p-6 sm:p-7 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+              <div class="space-y-1">
+                <span class="text-[10px] font-bold uppercase tracking-widest text-[#84827e] block">
+                  Commercial Impact & Results
+                </span>
+                <div class="text-3xl sm:text-4xl font-bold tracking-tight text-[#67645e]">
+                  {activeArtifact.metrics}
+                </div>
+              </div>
+              <div class="text-xs font-mono font-medium text-[#84827e] bg-white px-4 py-2 rounded-full border border-[#dddedc] shadow-xs">
+                Key Performance Indicator Target
+              </div>
+            </div>
+          {/if}
+
+          <!-- Primary Media Display (Interactive Video Player or High-Res Artwork) -->
           {#if activeArtifact.mediaType === 'video' && activeArtifact.videoUrl && modalHeroImage === activeArtifact.previewImage}
             {@const embed = getEmbedUrl(activeArtifact.videoUrl)}
-            <div class="rounded-xl overflow-hidden border border-stone-200 shadow-lg bg-black aspect-video w-full">
+            <div class="rounded-2xl overflow-hidden border border-[#dddedc] shadow-md bg-black aspect-video w-full">
               {#if embed.type === 'youtube' || embed.type === 'vimeo'}
                 <iframe
                   src={embed.src}
@@ -1015,11 +1114,11 @@
               {/if}
             </div>
           {:else if modalHeroImage}
-            <div class="relative rounded-xl overflow-hidden border border-stone-200 shadow-md bg-stone-100 max-h-96 group/preview">
+            <div class="relative rounded-2xl overflow-hidden border border-[#dddedc] shadow-sm bg-[#efeef1] w-full group/preview">
               <img
                 src={resolveUrl(modalHeroImage)}
                 alt={activeArtifact.title}
-                class="w-full h-full object-cover object-center"
+                class="w-full max-h-[580px] object-contain mx-auto bg-[#efeef1]"
               />
               {#if activeArtifact.mediaType === 'video' && activeArtifact.videoUrl && modalHeroImage !== activeArtifact.previewImage}
                 <button
@@ -1027,7 +1126,7 @@
                   onclick={() => {
                     modalHeroImage = activeArtifact?.previewImage || null;
                   }}
-                  class="absolute top-3 right-3 px-3 py-1.5 rounded-full text-xs font-mono bg-stone-900/90 text-stone-50 hover:bg-stone-900 transition-colors shadow-md backdrop-blur-sm cursor-pointer flex items-center gap-1.5"
+                  class="absolute top-4 right-4 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#67645e] text-white hover:bg-[#525252] transition-colors shadow-md backdrop-blur-sm cursor-pointer flex items-center gap-1.5"
                 >
                   <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                     <path d="M8 5v14l11-7z" />
@@ -1040,7 +1139,7 @@
                   onclick={() => {
                     modalHeroImage = activeArtifact?.previewImage || null;
                   }}
-                  class="absolute top-3 right-3 px-3 py-1.5 rounded-full text-xs font-mono bg-stone-900/90 text-stone-50 hover:bg-stone-900 transition-colors shadow-md backdrop-blur-sm cursor-pointer"
+                  class="absolute top-4 right-4 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#67645e] text-white hover:bg-[#525252] transition-colors shadow-md backdrop-blur-sm cursor-pointer"
                 >
                   Reset to Cover
                 </button>
@@ -1048,31 +1147,27 @@
             </div>
           {/if}
 
-          <!-- Markdown Case Study Body (Supports inline images ![Alt](url)) -->
+          <!-- Case Study Full-Width Narrative Body (THE BULK OF THE DISPLAY) -->
           {#if activeArtifact.body}
-            <div class="prose prose-stone max-w-none text-stone-700">
+            <div class="prose prose-stone max-w-none text-[#525252] text-sm sm:text-base leading-relaxed pt-2">
               {@html renderFormattedBody(activeArtifact.body)}
-            </div>
-          {:else if activeArtifact.description}
-            <div class="text-stone-700 leading-relaxed font-normal">
-              {activeArtifact.description}
             </div>
           {/if}
 
-          <!-- Supporting Collateral / Gallery Images (Optional) -->
+          <!-- Supporting Collateral Grid (If any) -->
           {#if activeArtifact.galleryImages && activeArtifact.galleryImages.length > 0}
-            <div class="space-y-3 pt-4 border-t border-stone-200/90">
+            <div class="space-y-4 pt-8 border-t border-[#dddedc]">
               <div class="flex items-center justify-between">
-                <h4 class="font-serif text-lg sm:text-xl font-bold text-stone-900 tracking-tight">
+                <span class="text-xs font-bold uppercase tracking-wider text-[#67645e]">
                   Supporting Collateral & Assets ({activeArtifact.galleryImages.length})
-                </h4>
-                <span class="text-[11px] font-mono text-stone-500">Curated Exhibition</span>
+                </span>
+                <span class="text-[11px] font-mono text-[#84827e]">Click any asset to view in hero frame</span>
               </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5">
                 {#each activeArtifact.galleryImages as imgUrl, idx}
                   <button
                     type="button"
-                    class="group/asset relative rounded-xl overflow-hidden border border-stone-200 bg-stone-100 shadow-sm hover:shadow-md transition-all text-left cursor-pointer p-0 block w-full focus:outline-none focus:ring-2 focus:ring-stone-400"
+                    class="group/asset relative rounded-xl overflow-hidden border border-[#dddedc] bg-[#efeef1] shadow-sm hover:shadow-md hover:border-[#67645e] transition-all text-left cursor-pointer p-0 block aspect-video focus:outline-none focus:ring-2 focus:ring-[#84827e]"
                     onclick={() => {
                       modalHeroImage = imgUrl;
                     }}
@@ -1081,54 +1176,48 @@
                     <img
                       src={resolveUrl(imgUrl)}
                       alt={`${activeArtifact.title} collateral ${idx + 1}`}
-                      class="w-full h-44 object-cover object-center group-hover/asset:scale-105 transition-transform duration-500"
+                      class="w-full h-full object-cover object-center group-hover/asset:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
-                    <div class="absolute inset-0 bg-stone-900/10 group-hover/asset:bg-stone-900/20 transition-colors"></div>
-                    <div class="absolute bottom-2.5 right-2.5 px-2.5 py-1 rounded-full bg-stone-900/85 text-[10px] font-mono text-stone-100 backdrop-blur-sm opacity-0 group-hover/asset:opacity-100 transition-opacity flex items-center gap-1">
-                      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
-                      Feature in preview
-                    </div>
                   </button>
                 {/each}
               </div>
             </div>
           {/if}
-        </div>
 
-        <!-- Lightbox Footer -->
-        <div class="p-4 px-6 border-t border-stone-200 bg-white flex items-center justify-between gap-4">
-          <div class="text-xs font-mono text-stone-500">
-            {#if activeArtifact.showDate && activeArtifact.date}
-              Archived on {new Date(activeArtifact.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long' })}
-            {/if}
-          </div>
-
-          <div class="flex items-center gap-3">
-            {#if activeArtifact.showLiveLink && activeArtifact.link}
+          <!-- Live Project Action Button -->
+          {#if activeArtifact.showLiveLink && activeArtifact.link}
+            <div class="pt-6 border-t border-[#dddedc] flex justify-center sm:justify-start">
               <a
                 href={activeArtifact.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-semibold bg-stone-900 text-stone-50 hover:bg-stone-800 transition shadow-sm"
+                class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider bg-[#67645e] text-white hover:bg-[#525252] shadow-sm transition-all"
               >
                 <span>View Live Project</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </a>
+            </div>
+          {/if}
+        </div>
+
+        <!-- Lightbox Footer -->
+        <div class="p-4 px-6 sm:px-8 border-t border-[#dddedc] bg-white flex items-center justify-between gap-4">
+          <div class="text-xs font-mono text-[#84827e]">
+            {#if activeArtifact.showDate && activeArtifact.date}
+              Archived on {new Date(activeArtifact.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long' })}
             {/if}
-            <button
-              type="button"
-              onclick={closeModal}
-              class="px-4 py-2 rounded-full text-xs font-medium bg-stone-100 text-stone-700 hover:bg-stone-200 transition cursor-pointer"
-            >
-              Dismiss
-            </button>
           </div>
+
+          <button
+            type="button"
+            onclick={closeModal}
+            class="px-6 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-[#efeef1] text-[#67645e] hover:bg-[#dddedc] transition cursor-pointer"
+          >
+            Dismiss
+          </button>
         </div>
       </div>
     {/if}

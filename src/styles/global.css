@@ -1,1 +1,82 @@
 @import "tailwindcss";
+
+@theme {
+  /* Rhode Color Palette Tokens */
+  --color-rhode-canvas: #ffffff;
+  --color-rhode-linen: #efeef1;
+  --color-rhode-stone: #edeceb;
+  --color-rhode-taupe: #67645e;
+  --color-rhode-charcoal: #525252;
+  --color-rhode-muted: #84827e;
+  --color-rhode-border: #c4c4c4;
+  --color-rhode-outline: #dddedc;
+  --color-rhode-sage: #4f6a46;
+  --color-rhode-pink: #f6c4d0;
+  --color-rhode-bronze: #643a2a;
+
+  /* Font Families */
+  --font-sans: "Plus Jakarta Sans", "Helvetica Neue", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-handwriting: "Caveat", cursive;
+
+  /* Easing Curves */
+  --ease-rhode: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-cursor: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom Rhode Scrollbar Utility */
+.scrollbar-rhode {
+  scrollbar-width: thin;
+  scrollbar-color: #67645e transparent;
+}
+
+.scrollbar-rhode::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.scrollbar-rhode::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-rhode::-webkit-scrollbar-thumb {
+  background-color: #84827e;
+  border-radius: 9999px;
+}
+
+.scrollbar-rhode::-webkit-scrollbar-thumb:hover {
+  background-color: #67645e;
+}
+
+/* Rhode Follower Cursor Utilities */
+@media (pointer: fine) {
+  .rhode-card-interactive,
+  .rhode-card-interactive button:not(.dev-action-btn),
+  .rhode-card-interactive a:not(.dev-action-btn),
+  .rhode-card-interactive img,
+  .rhode-card-interactive h3,
+  .rhode-card-interactive p,
+  .rhode-card-interactive span {
+    cursor: none !important;
+  }
+}
+
+.dev-action-btn,
+.dev-action-btn * {
+  cursor: pointer !important;
+}
+
+/* Hide custom follower cursor on touch devices where no fine mouse pointer exists */
+@media (hover: none) and (pointer: coarse) {
+  .rhode-custom-cursor {
+    display: none !important;
+  }
+}
+
+/* Drop navbar brand text tag when display is taller than 1.5:1 height:width (width:height <= 2:3) */
+@media (max-aspect-ratio: 2/3) {
+  .nav-brand-text {
+    display: none !important;
+  }
+}
