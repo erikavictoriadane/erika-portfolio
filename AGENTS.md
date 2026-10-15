@@ -106,7 +106,7 @@ All portfolio artifacts reside in `src/data/artifacts/<slug>.md`.
      - Stopping playback occurs immediately upon closing the dialog.
 3. **Inline Markdown Images**:
    - Case study narrative bodies support markdown images `![Caption](/previews/image.jpg)`.
-   - Rendered as editorial `<figure>` elements with subtle stone borders and mono-font `<figcaption>` bars.
+   - Rendered as editorial `<figure>` elements with subtle stone borders and matching `<figcaption>` bars.
 4. **Collateral Grid (`galleryImages`)**:
    - If provided in frontmatter, renders a 2-column visual exhibition beneath the narrative.
    - Clicking any collateral item swaps it into the top hero preview frame, with a *"Return to Cover"* or *"Return to Video"* button.
@@ -199,7 +199,7 @@ When modifying styles or adding new sections, maintain consistency with the exis
 - **Typography**:
   - Headings: `font-serif` (Cormorant Garamond)
   - Body & UI: `font-sans` (Plus Jakarta Sans)
-  - Badges & Metrics: `font-mono` (JetBrains Mono / system monospace)
+  - Badges & Metrics: `font-sans` (Plus Jakarta Sans, bold/uppercase tracking-wider, matching body typography)
 - **Component Framing**:
   - Museum mat board style: white border padding (`p-2.5 bg-white shadow-xl ring-1 ring-stone-900/5 rounded-2xl`).
   - Subtle micro-interactions: card elevation (`hover:-translate-y-1 hover:shadow-xl`), image zooms (`group-hover:scale-105`), smooth transitions (`duration-300`).

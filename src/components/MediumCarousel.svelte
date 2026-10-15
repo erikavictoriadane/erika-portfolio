@@ -181,7 +181,7 @@
             <div class="flex items-center gap-1.5 text-xs">
               <span class="font-bold text-[#102f10]">Erika Finnimore</span>
               <span class="text-[#84827e]">·</span>
-              <span class="text-[11px] font-mono text-[#84827e]">{article.formattedDate}</span>
+              <span class="text-[11px] text-[#84827e]">{article.formattedDate}</span>
             </div>
           </div>
 
@@ -210,7 +210,7 @@
 
           <!-- Bottom Story Metadata Row: Read Time on left, Read Link on right -->
           <div class="mt-4 pt-3 border-t border-[#dddedc]/60 flex items-center justify-between text-xs">
-            <span class="text-[11px] font-mono text-[#84827e]">{article.readTime}</span>
+            <span class="text-[11px] text-[#84827e]">{article.readTime}</span>
 
             <div class="flex items-center gap-1 text-[11px] font-bold text-[#102f10] group-hover:text-[#184418]">
               <span>Read Story</span>

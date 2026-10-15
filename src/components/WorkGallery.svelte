@@ -293,7 +293,7 @@
       .replace(/!\[(.*?)\]\((.*?)\)/g, (_match, alt, src) => {
         const resolvedSrc = resolveUrl(src);
         const captionHtml = alt
-          ? `<figcaption class="w-full py-2 px-4 text-center text-[11px] font-mono text-[#84827e] bg-white border-t border-[#dddedc] flex items-center justify-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#84827e] inline-block"></span>${alt}</figcaption>`
+          ? `<figcaption class="w-full py-2 px-4 text-center text-[11px] font-medium text-[#84827e] bg-white border-t border-[#dddedc] flex items-center justify-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#84827e] inline-block"></span>${alt}</figcaption>`
           : '';
         return `<figure class="my-4 rounded-xl overflow-hidden border border-[#dddedc] bg-white shadow-sm flex flex-col items-center">
           <img src="${resolvedSrc}" alt="${alt || 'Artifact collateral visual'}" class="max-w-full h-auto max-h-[580px] object-contain mx-auto block" loading="lazy" />
@@ -736,7 +736,7 @@
       </div>
 
       <!-- Exhibition Counter -->
-      <div class="text-xs font-mono text-[#84827e] flex items-center gap-2 shrink-0">
+      <div class="text-xs font-medium text-[#84827e] flex items-center gap-2 shrink-0">
         <span class="w-2 h-2 rounded-full bg-[#102f10]"></span>
         Displaying <span class="text-[#102f10] font-bold">{filteredArtifacts.length}</span> {filteredArtifacts.length === 1 ? 'case study' : 'case studies'}
       </div>
@@ -744,7 +744,7 @@
 
     <!-- Gallery Wings Filter Strip (Rhode Outline-to-Fill Style) -->
     <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-[#dddedc]">
-      <span class="text-xs font-mono font-bold uppercase tracking-wider text-[#84827e] mr-2 shrink-0">Filter By:</span>
+      <span class="text-xs font-bold uppercase tracking-wider text-[#84827e] mr-2 shrink-0">Filter By:</span>
       {#each visibleTags as tag}
         <button
           type="button"
@@ -766,7 +766,7 @@
         <button
           type="button"
           onclick={() => (isTagsExpanded = !isTagsExpanded)}
-          class="px-3.5 py-1.5 rounded-full text-xs font-mono font-bold text-[#84827e] hover:text-[#67645e] bg-[#efeef1] hover:bg-[#dddedc] transition-colors cursor-pointer inline-flex items-center gap-1.5 border border-[#dddedc]"
+          class="px-3.5 py-1.5 rounded-full text-xs font-bold text-[#84827e] hover:text-[#67645e] bg-[#efeef1] hover:bg-[#dddedc] transition-colors cursor-pointer inline-flex items-center gap-1.5 border border-[#dddedc]"
           aria-expanded={isTagsExpanded}
         >
           {#if isTagsExpanded}
@@ -843,7 +843,7 @@
             <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none gap-2">
               <div class="flex items-center gap-1.5 flex-wrap">
                 {#if artifact.hidden}
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[#525252]/90 text-white backdrop-blur-md shadow-sm shrink-0 flex items-center gap-1">
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#525252]/90 text-white backdrop-blur-md shadow-sm shrink-0 flex items-center gap-1">
                     <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />
                     </svg>
@@ -851,26 +851,26 @@
                   </span>
                 {/if}
                 {#if artifact.featured}
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[#102f10] text-white backdrop-blur-md shadow-sm shrink-0">
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#102f10] text-white backdrop-blur-md shadow-sm shrink-0">
                     Featured
                   </span>
                 {/if}
                 {#if artifact.mediaType === 'video'}
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[#643a2a] text-white backdrop-blur-md shadow-sm shrink-0 flex items-center gap-1">
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#643a2a] text-white backdrop-blur-md shadow-sm shrink-0 flex items-center gap-1">
                     <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24">
                       <path d="M8 5v14l11-7z" />
                     </svg>
                     Video
                   </span>
                 {:else if artifact.mediaType === 'document'}
-                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-[#525252] text-white backdrop-blur-md shadow-sm shrink-0">
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#525252] text-white backdrop-blur-md shadow-sm shrink-0">
                     Doc
                   </span>
                 {/if}
               </div>
 
               {#if artifact.metrics}
-                <span class="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-mono font-bold bg-white/95 text-[#67645e] shadow-sm backdrop-blur-md border border-[#dddedc] truncate">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-white/95 text-[#67645e] shadow-sm backdrop-blur-md border border-[#dddedc] truncate">
                   {artifact.metrics}
                 </span>
               {/if}
@@ -971,7 +971,7 @@
                     {/if}
                   </button>
                 {:else if artifact.showDate && artifact.date}
-                  <span class="text-[11px] font-mono text-[#84827e] shrink-0">
+                  <span class="text-[11px] font-medium text-[#84827e] shrink-0">
                     {new Date(artifact.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short' })}
                   </span>
                 {/if}
@@ -1011,7 +1011,7 @@
         <div class="p-5 px-6 sm:px-8 border-b border-[#dddedc] bg-white sticky top-0 z-30 flex items-center justify-between gap-4">
           <div class="flex items-center gap-2.5 flex-wrap flex-1 min-w-0">
             {#if activeArtifact.featured}
-              <span class="px-2.5 py-1 rounded-full text-xs font-mono uppercase tracking-wider bg-[#102f10] text-white shadow-sm shrink-0">
+              <span class="px-2.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#102f10] text-white shadow-sm shrink-0">
                 Featured
               </span>
             {/if}
@@ -1021,7 +1021,7 @@
               </span>
             {/each}
             {#if activeArtifact.mediaType === 'video'}
-              <span class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[#643a2a] text-white flex items-center gap-1.5 shadow-sm">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#643a2a] text-white flex items-center gap-1.5 shadow-sm">
                 <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
                 </svg>
@@ -1029,7 +1029,7 @@
               </span>
             {/if}
             {#if activeArtifact.metrics}
-              <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-[#67645e] text-white shadow-sm">
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-[#67645e] text-white shadow-sm">
                 {activeArtifact.metrics}
               </span>
             {/if}
@@ -1075,7 +1075,7 @@
                   {activeArtifact.metrics}
                 </div>
               </div>
-              <div class="text-xs font-mono font-medium text-[#84827e] bg-white px-4 py-2 rounded-full border border-[#dddedc] shadow-xs">
+              <div class="text-xs font-medium text-[#84827e] bg-white px-4 py-2 rounded-full border border-[#dddedc] shadow-xs">
                 Key Performance Indicator Target
               </div>
             </div>
@@ -1161,7 +1161,7 @@
                 <span class="text-xs font-bold uppercase tracking-wider text-[#67645e]">
                   Supporting Collateral & Assets ({activeArtifact.galleryImages.length})
                 </span>
-                <span class="text-[11px] font-mono text-[#84827e]">Click any asset to view in hero frame</span>
+                <span class="text-[11px] font-medium text-[#84827e]">Click any asset to view in hero frame</span>
               </div>
               <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3.5">
                 {#each activeArtifact.galleryImages as imgUrl, idx}
@@ -1205,7 +1205,7 @@
 
         <!-- Lightbox Footer -->
         <div class="p-4 px-6 sm:px-8 border-t border-[#dddedc] bg-white flex items-center justify-between gap-4">
-          <div class="text-xs font-mono text-[#84827e]">
+          <div class="text-xs font-medium text-[#84827e]">
             {#if activeArtifact.showDate && activeArtifact.date}
               Archived on {new Date(activeArtifact.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long' })}
             {/if}
@@ -1241,7 +1241,7 @@
             <div class="flex flex-wrap items-center gap-2">
               <!-- Tags list -->
               {#each editorData.tags as tag}
-                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-mono bg-stone-100 text-stone-800 border border-stone-300">
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-stone-100 text-stone-800 border border-stone-300">
                   {tag}
                   <button
                     type="button"
@@ -1266,7 +1266,7 @@
                       addTag();
                     }
                   }}
-                  class="px-2 py-0.5 rounded-full text-xs font-mono border border-stone-300 bg-white focus:outline-none focus:ring-1 focus:ring-stone-400 w-20 placeholder-stone-400"
+                  class="px-2 py-0.5 rounded-full text-xs border border-stone-300 bg-white focus:outline-none focus:ring-1 focus:ring-stone-400 w-20 placeholder-stone-400"
                 />
                 <button
                   type="button"
@@ -1283,7 +1283,7 @@
                 <button
                   type="button"
                   onclick={() => (editorData.mediaType = 'image')}
-                  class="px-2.5 py-0.5 rounded-full text-[11px] font-mono transition cursor-pointer {editorData.mediaType === 'image'
+                  class="px-2.5 py-0.5 rounded-full text-[11px] font-medium transition cursor-pointer {editorData.mediaType === 'image'
                     ? 'bg-stone-900 text-white font-semibold shadow-sm'
                     : 'text-stone-600 hover:text-stone-900'}"
                 >
@@ -1292,7 +1292,7 @@
                 <button
                   type="button"
                   onclick={() => (editorData.mediaType = 'video')}
-                  class="px-2.5 py-0.5 rounded-full text-[11px] font-mono transition cursor-pointer {editorData.mediaType === 'video'
+                  class="px-2.5 py-0.5 rounded-full text-[11px] font-medium transition cursor-pointer {editorData.mediaType === 'video'
                     ? 'bg-amber-600 text-white font-semibold shadow-sm'
                     : 'text-stone-600 hover:text-stone-900'}"
                 >
@@ -1301,7 +1301,7 @@
                 <button
                   type="button"
                   onclick={() => (editorData.mediaType = 'document')}
-                  class="px-2.5 py-0.5 rounded-full text-[11px] font-mono transition cursor-pointer {editorData.mediaType === 'document'
+                  class="px-2.5 py-0.5 rounded-full text-[11px] font-medium transition cursor-pointer {editorData.mediaType === 'document'
                     ? 'bg-stone-800 text-white font-semibold shadow-sm'
                     : 'text-stone-600 hover:text-stone-900'}"
                 >

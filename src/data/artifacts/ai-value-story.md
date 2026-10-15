@@ -85,7 +85,7 @@ I led the research, messaging, narrative development, and presentation creation,
       <div class="font-serif text-3xl sm:text-4xl font-bold text-stone-900">~1 Week</div>
       <div class="text-xs font-mono uppercase tracking-wider text-stone-500 mt-1">From initial request to sales-ready training</div>
     </div>
-    <span class="text-xs font-mono px-3 py-1 bg-stone-200 text-stone-700 rounded-full font-medium">Rapid GTM Execution</span>
+    <span class="text-xs px-3 py-1 bg-stone-200 text-stone-700 rounded-full font-bold">Rapid GTM Execution</span>
   </div>
 </div>
 
