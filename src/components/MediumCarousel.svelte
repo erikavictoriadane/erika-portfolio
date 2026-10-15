@@ -161,11 +161,7 @@
     {#each articles as article, index (article.id)}
       <article
         onclick={() => focusCard(index)}
-        class={`shrink-0 w-[86vw] sm:w-[420px] md:w-[460px] rounded-2xl bg-white p-4 sm:p-5 transition-all duration-300 group flex flex-col justify-between cursor-pointer ${
-          activeIndex === index
-            ? 'border-2 border-[#102f10] ring-1 ring-[#102f10] shadow-md'
-            : 'border border-[#dddedc] shadow-sm hover:border-[#102f10]/40 hover:shadow-md'
-        }`}
+        class="shrink-0 w-[86vw] sm:w-[420px] md:w-[460px] rounded-2xl bg-white p-4 sm:p-5 transition-all duration-300 group flex flex-col justify-between cursor-pointer border border-[#dddedc] shadow-sm hover:border-[#102f10]/40 hover:shadow-md"
       >
         <a
           href={article.link}
