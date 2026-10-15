@@ -62,41 +62,93 @@ const mediumArticles = await getMediumArticles('erikavictoriadane');
           <span class="font-bold text-base tracking-tight text-[#102f10] group-hover:text-[#184418] transition-colors lowercase whitespace-nowrap">
             erika finnimore
           </span>
-          <span class="hidden sm:block text-[10px] font-mono tracking-widest uppercase text-[#84827e] whitespace-nowrap">
+          <span class="hidden lg:block text-[10px] tracking-widest uppercase text-[#84827e] whitespace-nowrap">
             Marketing Strategy · Creative Direction
           </span>
         </div>
       </a>
 
-      <nav aria-label="Main Navigation">
-        <ul class="flex items-center gap-1 sm:gap-6 text-xs font-bold uppercase tracking-wider text-[#84827e]">
+      <!-- Desktop & Tablet Navigation: Visible whenever screen space permits -->
+      <nav aria-label="Main Navigation" class="hidden sm:block">
+        <ul class="flex items-center gap-1.5 sm:gap-2 md:gap-4 lg:gap-6 text-xs font-bold uppercase tracking-wider text-[#84827e]">
           <li>
-            <a href="#hero" class="px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors">
+            <a href="#hero" class="px-2.5 sm:px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors whitespace-nowrap">
               Overview
             </a>
           </li>
           <li>
-            <a href="#about" class="px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors">
+            <a href="#about" class="px-2.5 sm:px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors whitespace-nowrap">
               About
             </a>
           </li>
           <li>
-            <a href="#work" class="px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors">
+            <a href="#work" class="px-2.5 sm:px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors whitespace-nowrap">
               Work
             </a>
           </li>
           <li>
-            <a href="#writing" class="px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors">
+            <a href="#writing" class="px-2.5 sm:px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors whitespace-nowrap">
               Writing
             </a>
           </li>
           <li>
-            <a href="#contact" class="px-4 py-1.5 rounded-full border border-[#84827e] text-[#67645e] hover:bg-[#67645e] hover:text-white transition-all shadow-sm">
+            <a href="#contact" class="px-3.5 sm:px-4 py-1.5 rounded-full border border-[#84827e] text-[#67645e] hover:bg-[#184418] hover:border-[#184418] hover:text-white focus:bg-[#184418] focus:border-[#184418] focus:text-white focus:outline-none transition-all shadow-sm whitespace-nowrap">
               Contact
             </a>
           </li>
         </ul>
       </nav>
+
+      <!-- Mobile Hamburger Button (< sm) -->
+      <button
+        type="button"
+        id="btn-mobile-menu"
+        class="sm:hidden p-2 rounded-xl text-[#102f10] hover:bg-[#efeef1] transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#102f10]"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg id="icon-menu-bars" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-menu-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden sm:hidden border-t border-[#dddedc]/80 bg-white/95 backdrop-blur-md px-6 py-4 shadow-lg transition-all"
+    >
+      <ul class="flex flex-col gap-2 text-xs font-bold uppercase tracking-wider text-[#84827e]">
+        <li>
+          <a href="#hero" class="mobile-nav-link block px-3 py-2.5 rounded-xl hover:text-[#102f10] hover:bg-[#efeef1] transition-colors">
+            Overview
+          </a>
+        </li>
+        <li>
+          <a href="#about" class="mobile-nav-link block px-3 py-2.5 rounded-xl hover:text-[#102f10] hover:bg-[#efeef1] transition-colors">
+            About
+          </a>
+        </li>
+        <li>
+          <a href="#work" class="mobile-nav-link block px-3 py-2.5 rounded-xl hover:text-[#102f10] hover:bg-[#efeef1] transition-colors">
+            Work
+          </a>
+        </li>
+        <li>
+          <a href="#writing" class="mobile-nav-link block px-3 py-2.5 rounded-xl hover:text-[#102f10] hover:bg-[#efeef1] transition-colors">
+            Writing
+          </a>
+        </li>
+        <li class="pt-1">
+          <a href="#contact" class="mobile-nav-link block px-4 py-2.5 rounded-full border border-[#84827e] text-[#67645e] hover:bg-[#184418] hover:border-[#184418] hover:text-white focus:bg-[#184418] focus:border-[#184418] focus:text-white focus:outline-none text-center transition-all shadow-sm">
+            Contact
+          </a>
+        </li>
+      </ul>
     </div>
   </header>
 
@@ -120,7 +172,7 @@ const mediumArticles = await getMediumArticles('erikavictoriadane');
           <div class="pt-2 flex flex-wrap items-center gap-4">
             <a
               href="#work"
-              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-xs tracking-wider uppercase bg-[#102f10] text-white hover:bg-[#184418] shadow-sm transition-all cursor-pointer"
+              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-xs tracking-wider uppercase bg-[#102f10] text-white hover:bg-[#184418] focus:bg-[#184418] focus:outline-none shadow-sm transition-all cursor-pointer"
             >
               <span>View My Work</span>
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -207,7 +259,7 @@ const mediumArticles = await getMediumArticles('erikavictoriadane');
             <div class="pt-2 flex flex-wrap items-center gap-4">
               <a
                 href="#work"
-                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase bg-[#102f10] text-white hover:bg-[#184418] shadow-sm transition-all cursor-pointer"
+                class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase bg-[#102f10] text-white hover:bg-[#184418] focus:bg-[#184418] focus:outline-none shadow-sm transition-all cursor-pointer"
               >
                 <span>View My Work</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -641,6 +693,41 @@ const mediumArticles = await getMediumArticles('erikavictoriadane');
           }
         });
       }
+
+      // Mobile Navigation Menu Toggle
+      const mobileMenuBtn = document.getElementById('btn-mobile-menu') as HTMLButtonElement | null;
+      const mobileMenu = document.getElementById('mobile-menu') as HTMLDivElement | null;
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+      const iconMenuBars = document.getElementById('icon-menu-bars');
+      const iconMenuClose = document.getElementById('icon-menu-close');
+
+      function toggleMobileMenu(open?: boolean) {
+        if (!mobileMenu || !mobileMenuBtn) return;
+        const shouldOpen = open !== undefined ? open : mobileMenu.classList.contains('hidden');
+        if (shouldOpen) {
+          mobileMenu.classList.remove('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'true');
+          iconMenuBars?.classList.add('hidden');
+          iconMenuClose?.classList.remove('hidden');
+        } else {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          iconMenuBars?.classList.remove('hidden');
+          iconMenuClose?.classList.add('hidden');
+        }
+      }
+
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+      }
+
+      mobileNavLinks.forEach((link) => {
+        link.addEventListener('click', () => toggleMobileMenu(false));
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') toggleMobileMenu(false);
+      });
     </script>
   </main>
 
