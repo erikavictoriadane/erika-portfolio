@@ -286,7 +286,45 @@
 
   function renderFormattedBody(markdown: string = ''): string {
     if (!markdown) return '';
-    return markdown
+
+    // Markdown Tables (| Header | ... \n |---|... \n | Row | ...)
+    const tableRegex = /((?:^[ \t]*\|.+\|[ \t]*(?:\r?\n|$))+)/gm;
+    let formatted = markdown.replace(tableRegex, (match) => {
+      const lines = match.trim().split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+      if (lines.length < 2) return match;
+      const isSeparator = /^\|(?:\s*:?-+:?\s*\|)+$/.test(lines[1]);
+      if (!isSeparator) return match;
+
+      const parseRow = (line: string) => {
+        const cells = line.split('|').map((c) => c.trim());
+        if (cells[0] === '') cells.shift();
+        if (cells[cells.length - 1] === '') cells.pop();
+        return cells;
+      };
+
+      const headerCells = parseRow(lines[0]);
+      const headerHtml = `<thead><tr class="bg-[#f5f4f0] border-b border-[#dddedc] text-[#67645e] font-mono text-[11px] uppercase tracking-wider">${headerCells.map((c) => `<th class="py-2.5 px-3.5 font-bold text-left">${c}</th>`).join('')}</tr></thead>`;
+
+      const bodyRows = lines.slice(2).map((rowLine) => {
+        const cells = parseRow(rowLine);
+        const rowCellsHtml = cells.map((c, i) => {
+          const isFirst = i === 0;
+          return `<td class="py-2.5 px-3.5 text-[#525252] text-xs ${isFirst ? 'font-semibold text-[#67645e]' : ''}">${c}</td>`;
+        }).join('');
+        return `<tr class="border-b border-[#dddedc]/60 last:border-b-0 hover:bg-[#faf8f5] transition-colors">${rowCellsHtml}</tr>`;
+      }).join('');
+
+      return `<div class="my-5 overflow-x-auto rounded-xl border border-[#dddedc] bg-white shadow-sm not-prose">
+        <table class="w-full text-left border-collapse">
+          ${headerHtml}
+          <tbody class="divide-y divide-[#dddedc]/60">
+            ${bodyRows}
+          </tbody>
+        </table>
+      </div>`;
+    });
+
+    return formatted
       // Horizontal rules
       .replace(/^---$/gim, '<hr class="my-4 border-[#dddedc]" />')
       // Markdown Images: ![alt](url)
@@ -313,6 +351,7 @@
       .replace(/\*(.*?)\*/g, '<em class="italic text-[#525252]">$1</em>')
       .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-white text-[#67645e] font-mono text-xs border border-[#dddedc]">$1</code>')
       .replace(/^- (.*$)/gim, '<li class="ml-4 list-disc text-[#525252] mb-1.5 leading-relaxed marker:text-[#84827e] font-normal">$1</li>')
+      .replace(/^\d+\.\s+(.*$)/gim, '<li class="ml-4 list-decimal text-[#525252] mb-1.5 leading-relaxed marker:text-[#84827e] font-normal">$1</li>')
       .replace(/\n\n/g, '<div class="h-2"></div>');
   }
 

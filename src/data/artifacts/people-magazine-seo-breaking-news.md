@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/people-seo-cover.png"
 metrics: "Real-Time Newsroom • Multi-Channel Distribution"
 mediaType: "image"
-order: 12
+order: 13
 galleryImages: ["/previews/people-seo-cover.png","/previews/people-betty-white-homepage.png","/previews/people-betty-white-module.png","/previews/people-betty-white-push-alerts.png","/previews/people-seo-guidelines.png"]
 ---
 ### Overview
