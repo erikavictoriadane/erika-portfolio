@@ -93,7 +93,7 @@
         perspectives & writing
       </h2>
 
-      <p class="text-[#525252] text-sm sm:text-base leading-relaxed font-normal">
+      <p class="text-stone-900 text-sm sm:text-base leading-relaxed font-medium">
         Articles on marketing leadership, generative AI search optimization, and creative decision-making published on Medium.
       </p>
     </div>

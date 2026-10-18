@@ -154,17 +154,42 @@ const mediumArticles = await getMediumArticles('erikavictoriadane');
 
   <main class="flex-1">
     <!-- Section 1: Hero (#hero) -->
-    <section id="hero" class="relative pt-16 pb-16 md:pt-24 md:pb-20 max-w-6xl mx-auto px-6">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        <!-- Left Column: Headline, Bio & CTAs -->
-        <div class="lg:col-span-7 space-y-6 sm:space-y-7">
+    <section id="hero" class="relative w-full overflow-hidden min-h-[520px] sm:min-h-[580px] lg:min-h-[660px] flex items-center border-b border-[#dddedc]">
+      <!-- Background Banner Image -->
+      <div class="absolute inset-0 z-0">
+        <img
+          src={`${baseUrl}/images/erika-banner.jpg`}
+          alt="Erika Finnimore overlooking city skyline"
+          class="w-full h-full object-cover object-[70%_center] sm:object-[75%_center] md:object-[80%_center] lg:object-[85%_center]"
+          loading="eager"
+          fetchpriority="high"
+        />
 
-          <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold text-[#102f10] tracking-tight leading-[1.12]">
+        <!-- Desktop Scrim: Smooth, gradual eased fade with enhanced contrast backing in the text zone -->
+        <div
+          class="hidden lg:block absolute inset-0 pointer-events-none"
+          style="background: linear-gradient(to right, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.86) 20%, rgba(255, 255, 255, 0.72) 38%, rgba(255, 255, 255, 0.48) 55%, rgba(255, 255, 255, 0.22) 72%, rgba(255, 255, 255, 0.05) 85%, rgba(255, 255, 255, 0) 95%);"
+        ></div>
+
+        <!-- Tablet Scrim: Gentle horizontal gradient allowing background to show through -->
+        <div
+          class="hidden sm:block lg:hidden absolute inset-0 pointer-events-none"
+          style="background: linear-gradient(to right, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.82) 32%, rgba(255, 255, 255, 0.52) 62%, rgba(255, 255, 255, 0.15) 85%, rgba(255, 255, 255, 0) 100%);"
+        ></div>
+
+        <!-- Mobile Scrim: Soft translucent wash so banner is clearly visible while keeping text crisp -->
+        <div class="block sm:hidden absolute inset-0 bg-white/82 backdrop-blur-[0.5px] pointer-events-none"></div>
+      </div>
+
+      <!-- Hero Content Container -->
+      <div class="relative z-10 max-w-6xl mx-auto px-6 py-14 sm:py-20 lg:py-24 w-full">
+        <div class="max-w-md lg:max-w-lg space-y-6 sm:space-y-7">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#102f10] tracking-tight leading-[1.12]">
             hi, i'm erika.
-            <span class="block mt-1 font-normal text-[#102f10]">i make <span class="italic">ideas</span> happen.</span>
+            <span class="block mt-1 font-normal text-[#102f10]">i make <span class="italic">ideas</span>&nbsp;happen.</span>
           </h1>
 
-          <p class="text-base sm:text-lg text-[#525252] leading-relaxed font-normal max-w-xl">
+          <p class="text-base sm:text-lg text-stone-900 font-medium leading-relaxed">
             I'm a marketing strategist who combines creative thinking, audience insights, and data to develop campaigns, content, and experiences that connect with people and drive results.
           </p>
 
@@ -181,27 +206,10 @@ const mediumArticles = await getMediumArticles('erikavictoriadane');
             </a>
             <a
               href="#about"
-              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-xs tracking-wider uppercase bg-white text-[#67645e] border border-[#84827e] hover:bg-[#efeef1] shadow-sm transition-all cursor-pointer"
+              class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-bold text-xs tracking-wider uppercase bg-white/90 backdrop-blur-xs text-[#67645e] border border-[#84827e] hover:bg-[#efeef1] shadow-sm transition-all cursor-pointer"
             >
               <span>About Me</span>
             </a>
-          </div>
-        </div>
-
-        <!-- Right Column: Framed Editorial Hero Portrait -->
-        <div class="lg:col-span-5">
-          <div class="relative group mx-auto max-w-sm lg:max-w-none">
-            <!-- Flush Rhode rounded card framing -->
-            <div class="relative rounded-3xl overflow-hidden bg-[#efeef1] p-2.5 sm:p-3 border border-[#dddedc] shadow-sm">
-              <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-white relative">
-                <img
-                  src={`${baseUrl}/images/portrait-hero-white-shirt.jpg`}
-                  alt="Marketing Director portrait"
-                  class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                  loading="eager"
-                />
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -234,7 +242,7 @@ const mediumArticles = await getMediumArticles('erikavictoriadane');
               about me
             </h2>
 
-            <div class="space-y-4 text-[#525252] text-sm sm:text-base leading-relaxed font-normal">
+            <div class="space-y-4 text-stone-900 text-sm sm:text-base leading-relaxed font-medium">
               <p>
                 I'm a marketing strategist who loves figuring out how to make things work better. That could mean finding a new way to reach an audience, prototyping designs for A/B tests, or turning a complicated idea into something people can connect with emotionally.
               </p>
@@ -355,7 +363,7 @@ const mediumArticles = await getMediumArticles('erikavictoriadane');
           <h2 class="text-3xl sm:text-4xl font-bold text-[#102f10] tracking-tight">
             work samples
           </h2>
-          <p class="text-[#525252] text-sm sm:text-base leading-relaxed font-normal">
+          <p class="text-stone-900 text-sm sm:text-base leading-relaxed font-medium">
             Explore the challenge, strategy, execution, and results behind each project.
           </p>
         </div>
