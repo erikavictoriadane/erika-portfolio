@@ -1,6 +1,6 @@
 ---
 title: "WebMD Care: Adapting the Value Story for the AI Search Era"
-description: "How I reframed physician directory value amid AI search through executive positioning, sales enablement decks, objection playbooks, and training."
+description: "How I reframed physician directory value amid AI search through executive positioning, sales enablement, objection playbooks, and training."
 tags: ["Product Positioning","Sales Enablement","Healthcare"]
 showLiveLink: false
 date: "2026-10-04"
