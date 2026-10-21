@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/foursquare-landing-pages-cover.png"
 metrics: "Zero Eng Lift • Rapid GTM Deployment"
 mediaType: "image"
-order: 8
+order: 9
 galleryImages: ["/previews/foursquare-landing-pages-cover.png","/previews/foursquare-landing-pages-places-wireframe.png","/previews/foursquare-landing-pages-product-template.png","/previews/foursquare-landing-pages-editorial-template.png"]
 ---
 ### Overview

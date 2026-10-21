@@ -11,24 +11,7 @@ previewImage: "/previews/customer-moments-campaign-showcase.jpg"
 metrics: "41.9% Open Rate • 9.1% Guide Downloads • -32.1 pp Churn"
 mediaType: "image"
 order: 3
-galleryImages:
-  - "/previews/customer-moments-campaign-showcase.jpg"
-  - "/previews/customer-moments-retention-impact-chart.png"
-  - "/previews/customer-moments-performance-email.png"
-  - "/previews/customer-moments-provider-guide-cover.png"
-  - "/previews/customer-moments-conversion-checklist-cover.png"
-  - "/previews/customer-moments-milestone-10.jpg"
-  - "/previews/customer-moments-milestone-25.jpg"
-  - "/previews/customer-moments-milestone-50.jpg"
-  - "/previews/customer-moments-preferred-provider-badge.jpg"
-  - "/previews/customer-moments-patients-choice-badge.jpg"
-  - "/previews/customer-moments-low-quality-score.jpg"
-  - "/previews/customer-moments-onboarding-email-1.jpg"
-  - "/previews/customer-moments-onboarding-email-2.jpg"
-  - "/previews/customer-moments-onboarding-email-3.jpg"
-  - "/previews/customer-moments-onboarding-email-4.jpg"
-  - "/previews/customer-moments-onboarding-email-5.jpg"
-  - "/previews/customer-moments-onboarding-email-6.jpg"
+galleryImages: ["/previews/customer-moments-campaign-showcase.jpg","/previews/customer-moments-retention-impact-chart.png","/previews/customer-moments-performance-email.png","/previews/customer-moments-provider-guide-cover.png","/previews/customer-moments-conversion-checklist-cover.png","/previews/customer-moments-milestone-10.jpg","/previews/customer-moments-milestone-25.jpg","/previews/customer-moments-milestone-50.jpg","/previews/customer-moments-preferred-provider-badge.jpg","/previews/customer-moments-patients-choice-badge.jpg","/previews/customer-moments-low-quality-score.jpg","/previews/customer-moments-onboarding-email-1.jpg","/previews/customer-moments-onboarding-email-2.jpg","/previews/customer-moments-onboarding-email-3.jpg","/previews/customer-moments-onboarding-email-4.jpg","/previews/customer-moments-onboarding-email-5.jpg","/previews/customer-moments-onboarding-email-6.jpg"]
 ---
 ### Overview
 Acquiring customers is only part of the equation—keeping them engaged and helping them realize the ongoing return on their investment is essential to long-term business health. WebMD Care faced customer retention challenges with its core directory subscription product: Featured Profiles gave healthcare providers tools to increase online visibility, showcase their practice, and connect with prospective patients, but customers did not always take full advantage of those capabilities, and the commercial value they were receiving was not always immediately apparent.

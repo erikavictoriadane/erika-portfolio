@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/insidehook-delmonicos-cover.jpg"
 metrics: "80% Video Completion Rate • 6.3K Full Views"
 mediaType: "image"
-order: 12
+order: 13
 galleryImages: ["/previews/insidehook-delmonicos-cover.jpg","/previews/insidehook-delmonicos-hero.png"]
 ---
 ### Overview

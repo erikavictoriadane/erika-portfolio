@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/tastry-score-cards-cover.png"
 metrics: "1-Page Format • Automated Generation"
 mediaType: "image"
-order: 4
+order: 5
 galleryImages: ["/previews/tastry-score-cards-cover.png","/previews/tastry-score-cards-cuvaison.png","/previews/tastry-score-cards-pillars-hercules.png","/previews/tastry-score-cards-prototype-chenin.png","/previews/tastry-score-cards-chemistry-dashboard.png"]
 ---
 ### Overview
