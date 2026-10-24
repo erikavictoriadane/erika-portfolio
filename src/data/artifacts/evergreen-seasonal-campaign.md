@@ -1,7 +1,7 @@
 ---
 title: "WebMD Care: Turning Evergreen Content Into a Seasonal Campaign"
 description: "How I turned existing reputation-management resources into two timely Halloween campaigns, carrying the creative across email, social, landing pages, and downloadable guides."
-tags: ["Content Strategy", "Integrated Marketing", "Healthcare"]
+tags: ["Content Strategy","Integrated Marketing","Healthcare"]
 showLiveLink: false
 date: "2026-10-21"
 showDate: false
@@ -11,18 +11,8 @@ previewImage: "/previews/case_study_4_showcase.jpg"
 metrics: "48 Demos • $53K ARR • 72 Downloads"
 mediaType: "image"
 order: 4
-galleryImages:
-  - "/previews/case_study_4_showcase.jpg"
-  - "/previews/evergreen-seasonal-feedback-fear-guide-cover.png"
-  - "/previews/evergreen-seasonal-frightening-reviews-guide-cover.png"
-  - "/previews/evergreen-seasonal-feedback-fear-email.png"
-  - "/previews/evergreen-seasonal-frightening-reviews-email.png"
-  - "/previews/evergreen-seasonal-social-square-templates.png"
-  - "/previews/evergreen-seasonal-social-square-negative-reviews.png"
-  - "/previews/evergreen-seasonal-social-story-templates.png"
-  - "/previews/evergreen-seasonal-social-story-negative-reviews.png"
+galleryImages: ["/previews/case_study_4_showcase.jpg","/previews/evergreen-seasonal-feedback-fear-guide-cover.png","/previews/evergreen-seasonal-frightening-reviews-guide-cover.png","/previews/evergreen-seasonal-feedback-fear-email.png","/previews/evergreen-seasonal-frightening-reviews-email.png","/previews/evergreen-seasonal-social-square-templates.png","/previews/evergreen-seasonal-social-square-negative-reviews.png","/previews/evergreen-seasonal-social-story-templates.png","/previews/evergreen-seasonal-social-story-negative-reviews.png"]
 ---
-
 ### Overview
 What if the next successful campaign didn't require creating anything new? For Halloween 2025, I saw an opportunity to turn existing reputation-management resources into something timely, memorable, and useful to healthcare providers.
 

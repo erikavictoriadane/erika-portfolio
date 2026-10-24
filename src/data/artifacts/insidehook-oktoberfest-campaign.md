@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/insidehook-oktoberfest-cover.jpg"
 metrics: "11.8K Views • $1.59 CPL • 4:24 Time on Page"
 mediaType: "image"
-order: 11
+order: 12
 galleryImages: ["/previews/insidehook-oktoberfest-cover.jpg","/previews/insidehook-oktoberfest-testing-matrix.png","/previews/insidehook-oktoberfest-top-post-1.png","/previews/insidehook-oktoberfest-top-post-2.png","/previews/insidehook-oktoberfest-endcard.jpg","/previews/insidehook-oktoberfest-lead-form.png"]
 ---
 ### Overview
