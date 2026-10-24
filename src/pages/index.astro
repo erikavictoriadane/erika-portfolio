@@ -219,18 +219,42 @@ const mediumArticles = await getMediumArticles('erikavictoriadane');
     <section id="about" class="py-20 bg-white border-t border-[#dddedc]">
       <div class="max-w-6xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <!-- Left Column: Editorial Portrait Card -->
+          <!-- Left Column: Editorial Photo Collage -->
           <div class="lg:col-span-5">
-            <div class="relative group">
-              <!-- Flush Rhode rounded card framing -->
-              <div class="relative rounded-3xl overflow-hidden bg-[#efeef1] p-2.5 sm:p-3 border border-[#dddedc] shadow-sm">
-                <div class="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-white relative">
-                  <img
-                    src={`${baseUrl}/images/portrait.jpg`}
-                    alt="Marketing Director portrait"
-                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
-                    loading="lazy"
-                  />
+            <!-- 
+              Collage Overlap Geometry:
+              - Desk photo is scaled up by 10% (w-[73%] vs Moki w-[66%]).
+              - Container aspect-[5/8] (height = 1.6 * width).
+              - Desk height = 0.973 * width; Moki height = 0.88 * width.
+              - Moki anchored at bottom starts at 0.72; Desk ends at 0.973.
+              - Overlap = 0.253 (exactly ~29% of Moki photo height).
+            -->
+            <div class="relative w-full max-w-md mx-auto lg:max-w-none aspect-[5/8]">
+              <!-- Moki Photo: Bottom-Right (Base Layer) -->
+              <div class="absolute bottom-0 right-0 w-[66%] z-10" style="z-index: 10;">
+                <div class="rounded-2xl sm:rounded-3xl overflow-hidden bg-[#efeef1] p-1 sm:p-1.5 border border-[#dddedc] shadow-md group">
+                  <div class="aspect-[3/4] w-full overflow-hidden rounded-xl sm:rounded-2xl bg-white relative">
+                    <img
+                      src={`${baseUrl}/images/erika_moki.png`}
+                      alt="Erika holding Moki"
+                      class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desk Photo: Top-Left (Scaled up by 10%, Placed Above Moki Photo where it overlaps) -->
+              <div class="absolute top-0 left-0 w-[73%] z-20" style="z-index: 20;">
+                <div class="rounded-2xl sm:rounded-3xl overflow-hidden bg-[#efeef1] p-1 sm:p-1.5 border border-[#dddedc] shadow-xl group">
+                  <div class="aspect-[3/4] w-full overflow-hidden rounded-xl sm:rounded-2xl bg-white relative">
+                    <img
+                      src={`${baseUrl}/images/erika_desk.png`}
+                      alt="Erika working at desk"
+                      class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
