@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/paid-social-hero-thumbnail.jpg"
 metrics: "-67% Acquisition Cost • $259K ARR • 3.36× ROAS"
 mediaType: "image"
-order: 5
+order: 4
 galleryImages: ["/previews/paid-social-hero-thumbnail.jpg","/previews/paid-social-ab-test-creative-spread.png","/previews/paid-social-meta-ads-ui.png","/previews/paid-social-salesforce-revenue-attribution.png"]
 ---
 ### Overview

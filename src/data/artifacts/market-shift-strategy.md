@@ -5,12 +5,12 @@ tags: ["Integrated Marketing","Content Strategy","Healthcare"]
 showLiveLink: false
 date: "2026-09-30"
 showDate: false
-featured: true
+featured: false
 hidden: false
 previewImage: "/previews/market-shift-landing-page.png"
 metrics: "28 Demos • $16.3K MRR"
 mediaType: "image"
-order: 1
+order: 6
 galleryImages: ["/previews/market-shift-landing-page.png","/previews/market-shift-guide-cover.png","/previews/market-shift-email.png","/previews/market-shift-social-square.png","/previews/market-shift-social-instagram.png","/previews/market-shift-social-story.png"]
 ---
 ### Overview

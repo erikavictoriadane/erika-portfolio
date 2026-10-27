@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import SelectedWork from '../components/SelectedWork.svelte';
 import WorkGallery from '../components/WorkGallery.svelte';
 import MediumCarousel from '../components/MediumCarousel.svelte';
 import { getMediumArticles } from '../data/medium';
@@ -82,7 +83,7 @@ const mediumArticles = await getMediumArticles('erikavictoriadane');
             </a>
           </li>
           <li>
-            <a href="#work" class="px-2.5 sm:px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors whitespace-nowrap">
+            <a href="#selected-work" class="px-2.5 sm:px-3 py-1.5 rounded-full hover:text-[#67645e] hover:bg-[#efeef1] transition-colors whitespace-nowrap">
               Work
             </a>
           </li>
@@ -380,12 +381,19 @@ const mediumArticles = await getMediumArticles('erikavictoriadane');
     </section>
     ========================================================================= -->
 
-    <!-- Section 3: Work Gallery (#work) -->
-    <section id="work" class="py-24 bg-white border-t border-[#dddedc]">
+    <!-- Section 2.5: Selected Work Carousel (#selected-work) -->
+    <section id="selected-work" class="py-20 sm:py-24 bg-white border-t border-[#dddedc]">
+      <div class="max-w-7xl mx-auto px-6">
+        <SelectedWork client:visible artifacts={artifacts} />
+      </div>
+    </section>
+
+    <!-- Section 3: Explore All Projects (#work) -->
+    <section id="work" class="py-20 sm:py-24 bg-white border-t border-[#dddedc]">
       <div class="max-w-7xl mx-auto px-6">
         <div class="max-w-2xl mb-12 space-y-3">
           <h2 class="text-3xl sm:text-4xl font-bold text-[#102f10] tracking-tight">
-            work samples
+            explore all projects
           </h2>
           <p class="text-stone-900 text-sm sm:text-base leading-relaxed font-medium">
             Explore the challenge, strategy, execution, and results behind each project.
@@ -624,10 +632,18 @@ const mediumArticles = await getMediumArticles('erikavictoriadane');
               </div>
               <div>
                 <a
+                  href="#selected-work"
+                  class="text-sm font-bold text-[#67645e] underline underline-offset-4 decoration-[#dddedc] hover:decoration-[#67645e] transition-colors"
+                >
+                  Selected Work
+                </a>
+              </div>
+              <div>
+                <a
                   href="#work"
                   class="text-sm font-bold text-[#67645e] underline underline-offset-4 decoration-[#dddedc] hover:decoration-[#67645e] transition-colors"
                 >
-                  All Work Samples
+                  Explore All Projects
                 </a>
               </div>
               <div>

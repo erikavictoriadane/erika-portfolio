@@ -5,12 +5,12 @@ tags: ["Audience Research","Product Positioning","B2B Marketing"]
 showLiveLink: false
 date: "2023-12-10"
 showDate: false
-featured: true
+featured: false
 hidden: false
 previewImage: "/previews/tastry-research-cover.png"
 metrics: "2 Enterprise Deals Closed • J. Lohr Won"
 mediaType: "image"
-order: 7
+order: 9
 galleryImages: ["/previews/tastry-research-cover.png","/previews/tastry-research-5ways-messaging.png","/previews/tastry-research-jlohr-scorecard.png"]
 ---
 ### Overview

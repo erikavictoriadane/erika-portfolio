@@ -5,12 +5,12 @@ tags: ["Product Positioning","Sales Enablement","Healthcare"]
 showLiveLink: false
 date: "2026-10-04"
 showDate: false
-featured: true
+featured: false
 hidden: false
 previewImage: "/previews/ai-value-story-deck-cover.png"
 metrics: "52% → 69% Close • +17 pts Lift"
 mediaType: "image"
-order: 2
+order: 5
 galleryImages: ["/previews/ai-value-story-deck-cover.png","/previews/ai-value-story-guide-answer-era.png","/previews/ai-value-story-guide-objection-handling.png","/previews/ai-value-story-guide-maintaining-visibility.png","/previews/ai-value-story-deck-slide-id-card.png","/previews/ai-value-story-deck-slide-answers.png","/previews/ai-value-story-deck-slide-website-objection.png"]
 ---
 ### Overview

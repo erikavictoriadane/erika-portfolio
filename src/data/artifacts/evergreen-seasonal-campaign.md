@@ -5,12 +5,12 @@ tags: ["Content Strategy","Integrated Marketing","Healthcare"]
 showLiveLink: false
 date: "2026-10-21"
 showDate: false
-featured: true
+featured: false
 hidden: false
 previewImage: "/previews/case_study_4_showcase.jpg"
 metrics: "48 Demos • $53K ARR • 72 Downloads"
 mediaType: "image"
-order: 4
+order: 7
 galleryImages: ["/previews/case_study_4_showcase.jpg","/previews/evergreen-seasonal-feedback-fear-guide-cover.png","/previews/evergreen-seasonal-frightening-reviews-guide-cover.png","/previews/evergreen-seasonal-feedback-fear-email.png","/previews/evergreen-seasonal-frightening-reviews-email.png","/previews/evergreen-seasonal-social-square-templates.png","/previews/evergreen-seasonal-social-square-negative-reviews.png","/previews/evergreen-seasonal-social-story-templates.png","/previews/evergreen-seasonal-social-story-negative-reviews.png"]
 ---
 ### Overview

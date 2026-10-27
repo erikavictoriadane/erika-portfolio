@@ -5,12 +5,12 @@ tags: ["Sales Enablement","Product Positioning","B2B Marketing"]
 showLiveLink: false
 date: "2023-12-12"
 showDate: false
-featured: true
+featured: false
 hidden: false
 previewImage: "/previews/tastry-score-cards-cover.png"
 metrics: "1-Page Format • Automated Generation"
 mediaType: "image"
-order: 6
+order: 8
 galleryImages: ["/previews/tastry-score-cards-cover.png","/previews/tastry-score-cards-cuvaison.png","/previews/tastry-score-cards-pillars-hercules.png","/previews/tastry-score-cards-prototype-chenin.png","/previews/tastry-score-cards-chemistry-dashboard.png"]
 ---
 ### Overview

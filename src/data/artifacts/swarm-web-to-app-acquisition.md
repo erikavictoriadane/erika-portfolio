@@ -5,12 +5,12 @@ tags: ["Growth Marketing","Performance Marketing"]
 showLiveLink: false
 date: "2018-10-22"
 showDate: false
-featured: true
+featured: false
 hidden: false
 previewImage: "/previews/swarm-branch-journeys-cover.png"
 metrics: "$1.07 Projected CPI • +48% Lift"
 mediaType: "image"
-order: 10
+order: 11
 galleryImages: ["/previews/swarm-branch-journeys-cover.png","/previews/swarm-branch-journeys-winners.png","/previews/swarm-branch-journeys-stats.png","/previews/swarm-branch-journeys-phase2.png","/previews/swarm-branch-journeys-retention.png"]
 ---
 ### Overview

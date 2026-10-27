@@ -5,12 +5,12 @@ tags: ["Brand Strategy","Performance Marketing"]
 showLiveLink: false
 date: "2017-10-06"
 showDate: false
-featured: false
+featured: true
 hidden: false
 previewImage: "/previews/insidehook-oktoberfest-cover.jpg"
 metrics: "11.8K Views • $1.59 CPL • 4:24 Time on Page"
 mediaType: "image"
-order: 14
+order: 2
 galleryImages: ["/previews/insidehook-oktoberfest-cover.jpg","/previews/insidehook-oktoberfest-testing-matrix.png","/previews/insidehook-oktoberfest-top-post-1.png","/previews/insidehook-oktoberfest-top-post-2.png","/previews/insidehook-oktoberfest-endcard.jpg","/previews/insidehook-oktoberfest-lead-form.png"]
 ---
 ### Overview
