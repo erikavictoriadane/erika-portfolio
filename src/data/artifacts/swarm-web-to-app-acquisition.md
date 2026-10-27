@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/swarm-branch-journeys-cover.png"
 metrics: "$1.07 Projected CPI • +48% Lift"
 mediaType: "image"
-order: 8
+order: 9
 galleryImages: ["/previews/swarm-branch-journeys-cover.png","/previews/swarm-branch-journeys-winners.png","/previews/swarm-branch-journeys-stats.png","/previews/swarm-branch-journeys-phase2.png","/previews/swarm-branch-journeys-retention.png"]
 ---
 ### Overview

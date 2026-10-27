@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/foursquare-mau-vegas-cover.jpg"
 metrics: "Main Stage Activation • VIP Executive Pipeline"
 mediaType: "image"
-order: 16
+order: 17
 galleryImages: ["/previews/foursquare-mau-vegas-cover.jpg","/previews/foursquare-mau-vegas-booth.jpg","/previews/foursquare-mau-vegas-swag.jpg","/previews/foursquare-mau-vegas-touchtunes.jpg","/previews/foursquare-mau-vegas-lounge.jpg"]
 ---
 ### Overview
