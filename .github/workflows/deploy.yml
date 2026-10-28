@@ -37,6 +37,9 @@ jobs:
         run: npm ci
 
       - name: Type check & compile Astro SSG
+        env:
+          PUBLIC_GA_ID: ${{ secrets.PUBLIC_GA_ID || vars.PUBLIC_GA_ID }}
+          PUBLIC_GTM_ID: ${{ secrets.PUBLIC_GTM_ID || vars.PUBLIC_GTM_ID }}
         run: |
           npm run check
           npm run build
