@@ -1,7 +1,7 @@
 ---
 title: "WebMD Care: Cutting B2B Acquisition Costs by 67%: When Simpler Creative Won"
 description: "How I tested text-first creative against image-led ads across a year of Meta campaigns, connecting creative variants to Salesforce revenue data to reduce customer acquisition costs by 67%."
-tags: ["Performance Marketing","B2B Marketing","Healthcare"]
+tags: ["Performance Marketing","B2B Marketing","A/B Testing","Multivariate Testing","Paid Social  Media"]
 showLiveLink: false
 date: "2026-10-23"
 showDate: false
@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/paid-social-hero-thumbnail.jpg"
 metrics: "-67% Acquisition Cost • $259K ARR • 3.36× ROAS"
 mediaType: "image"
-order: 4
+order: 3
 galleryImages: ["/previews/paid-social-hero-thumbnail.jpg","/previews/paid-social-ab-test-creative-spread.png","/previews/paid-social-meta-ads-ui.png","/previews/paid-social-salesforce-revenue-attribution.png"]
 ---
 ### Overview

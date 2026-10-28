@@ -1,7 +1,7 @@
 ---
-title: "People Magazine: High-Velocity SEO Strategy & Real-Time Audience Distribution"
+title: "People Magazine: Real-Time Audience Distribution"
 description: "How I combined search intent architecture with real-time Chartbeat analytics and high-velocity push alerts to capture millions of readers during breaking cultural news."
-tags: ["Content Strategy","Audience Research"]
+tags: ["Content Strategy","Audience Research","Push Notifications","Copywriting","Web Content Production"]
 showLiveLink: false
 date: "2021-12-31"
 showDate: false
@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/people-seo-cover.png"
 metrics: "Real-Time Newsroom • Multi-Channel Distribution"
 mediaType: "image"
-order: 17
+order: 18
 galleryImages: ["/previews/people-seo-cover.png","/previews/people-betty-white-homepage.png","/previews/people-betty-white-module.png","/previews/people-betty-white-push-alerts.png","/previews/people-seo-guidelines.png"]
 ---
 ### Overview

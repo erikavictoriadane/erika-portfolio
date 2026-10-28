@@ -1,16 +1,16 @@
 ---
 title: "InsideHook: Multi-Channel Editorial Sponsorship & Subscriber Growth"
 description: "How a 64-variant multivariate ad campaign and native lead capture delivered 11,800+ page views, an average 4:24 time on page, and $1.59 subscriber CPL."
-tags: ["Brand Strategy","Performance Marketing"]
+tags: ["Brand Strategy","Performance Marketing","A/B Testing","Multivariate Testing","Paid Social Media"]
 showLiveLink: false
 date: "2017-10-06"
 showDate: false
-featured: true
+featured: false
 hidden: false
 previewImage: "/previews/insidehook-oktoberfest-cover.jpg"
 metrics: "11.8K Views • $1.59 CPL • 4:24 Time on Page"
 mediaType: "image"
-order: 2
+order: 9
 galleryImages: ["/previews/insidehook-oktoberfest-cover.jpg","/previews/insidehook-oktoberfest-testing-matrix.png","/previews/insidehook-oktoberfest-top-post-1.png","/previews/insidehook-oktoberfest-top-post-2.png","/previews/insidehook-oktoberfest-endcard.jpg","/previews/insidehook-oktoberfest-lead-form.png"]
 ---
 ### Overview

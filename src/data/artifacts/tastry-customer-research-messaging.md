@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/tastry-research-cover.png"
 metrics: "2 Enterprise Deals Closed • J. Lohr Won"
 mediaType: "image"
-order: 9
+order: 13
 galleryImages: ["/previews/tastry-research-cover.png","/previews/tastry-research-5ways-messaging.png","/previews/tastry-research-jlohr-scorecard.png"]
 ---
 ### Overview

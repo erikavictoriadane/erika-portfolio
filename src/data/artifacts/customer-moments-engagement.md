@@ -1,7 +1,7 @@
 ---
-title: "WebMD Care: Turning Customer Moments Into Opportunities for Engagement"
+title: "WebMD Care: Reducing Churn Through Strategic Customer Engagement"
 description: "How I developed a multi-touch lifecycle marketing program across onboarding, performance reporting, review milestones, and quality optimization to drive provider retention."
-tags: ["Lifecycle Marketing","Healthcare","Customer Retention"]
+tags: ["Lifecycle Marketing","Customer Retention","Churn Reduction","Email Marketing"]
 showLiveLink: false
 date: "2026-10-15"
 showDate: false

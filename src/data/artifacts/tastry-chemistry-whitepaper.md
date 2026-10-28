@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/tastry-whitepaper-cover.png"
 metrics: "6% Newsletter CTR • Organic Inbound Demand"
 mediaType: "image"
-order: 14
+order: 15
 galleryImages: ["/previews/tastry-whitepaper-cover.png","/previews/tastry-whitepaper-landing-page.png"]
 ---
 ### Overview

@@ -10,7 +10,7 @@ hidden: false
 previewImage: "/previews/market-shift-landing-page.png"
 metrics: "28 Demos • $16.3K MRR"
 mediaType: "image"
-order: 6
+order: 7
 galleryImages: ["/previews/market-shift-landing-page.png","/previews/market-shift-guide-cover.png","/previews/market-shift-email.png","/previews/market-shift-social-square.png","/previews/market-shift-social-instagram.png","/previews/market-shift-social-story.png"]
 ---
 ### Overview
